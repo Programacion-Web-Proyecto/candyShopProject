@@ -1,0 +1,68 @@
+
+
+.all {
+  background-color: #151515;
+}
+.contenido {
+  display: flex;
+  width: 65%;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding: 50px;
+  background-color: #4B1818;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev,
+  .next,
+  .text {
+    font-size: 100px;
+  }
+}
+
+.carrusel {
+  width: 50%;
+  align-self: center;
+  align-content: center;
+}
+
+.acceso {
+  width: 100%;
+  margin: 50px;
+  padding-top: -100px;
+}
+
+
+.contacto {
+  /* display: flex;
+  
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding: 50px;
+  background-color: rgb(255, 238, 0);
+  border-radius: 30px; */
+  width: 80%;
+  margin: 0 auto;
+  
+  color: #fff;
+}
+
+.contacto >h2{
+  text-align: center;
+}
+
+.formPago {
+  width: 90%;
+  margin: 0 auto;
+  
+}
+.formPago h2 {
+  width: 90%;
+  text-align: center;
+}
