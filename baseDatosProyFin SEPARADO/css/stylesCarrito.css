@@ -1,0 +1,43 @@
+* {
+    font-family: "Montserrat", sans-serif;
+}
+body,
+html,
+form,
+.container,
+.carrito {
+    margin: 0;
+    width: 100%;
+}
+.container {
+    padding: 10px;
+    box-sizing: border-box;
+}
+.carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.consulta {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 10px;
+}
+.producto {
+    border: 2px solid black;
+    border-radius: 15px;
+}
+img {
+    height: 250px;
+    width: 100%;
+    object-fit: contain;
+}
+.noOferta {
+    color: gray;
+    text-decoration: line-through;
+}
+.oferta {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+}
