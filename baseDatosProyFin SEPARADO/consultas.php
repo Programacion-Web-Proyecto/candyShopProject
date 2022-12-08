@@ -38,7 +38,7 @@ if ($conexion->connect_errno) {
         }
     }
     $sql = "SELECT categoria FROM productos GROUP BY categoria";
-    $catres = $conexion->query($sql); //diferenets categorias existentes
+    $catres = $conexion->query($sql); //diferentes categorias existentes
     $filtroCat = (isset($_POST['filtro'])) ? $_POST['filtro'] : 1;
     $sql = "SELECT * FROM productos WHERE " . $filtroCat;
     $resultado = $conexion->query($sql);
