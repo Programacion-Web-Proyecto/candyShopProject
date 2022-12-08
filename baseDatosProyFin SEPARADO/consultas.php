@@ -23,6 +23,20 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 if ($conexion->connect_errno) {
     die('Error en la conexion');
 } else {
+    if (isset($_POST['carrito'])) {
+        if (!isset($_SESSION['carrito'])) {
+            $_SESSION['carrito'] = array();
+        }
+        $carrito = $_POST['carrito'];
+        $oferta = (isset($_POST['oferta'])) ? $_POST['oferta'] : 0;
+        $prodCar = array();
+        $sql = "SELECT * FROM productos WHERE idProducto=" . $carrito . ";";
+        $resultado = $conexion->query($sql);
+        if ($fila = $resultado->fetch_assoc()) {
+            array_push($prodCar, $fila['idProducto'], $fila['nombreProducto'], $fila['categoria'], $fila['descripcion'], $fila['precio'], $fila['existencia'], $fila['archIMG'], $oferta);
+            array_push($_SESSION['carrito'], $prodCar);
+        }
+    }
     $sql = "SELECT * FROM productos";
     $resultado = $conexion->query($sql);
     $res = $conexion->query($sql);
@@ -31,6 +45,9 @@ if ($conexion->connect_errno) {
     <div class="container">
         <div class="carrito">
             <button onclick="document.location='index.php'">regresar</button>
+            <!-- <select name="filtro" id="filtro">
+
+            </select> -->
             <div class="carritoIcon">
                 <i class="fa-solid fa-cart-shopping" onclick="document.location='carrito.php'" id="carritoIcon"></i>
                 <div class="numeroElementos">
@@ -49,7 +66,7 @@ if ($conexion->connect_errno) {
             $descuento = 0.9;
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<div class=\"producto\">";
-                echo "<form action=\"carrito.php\" method=\"post\">";
+                echo "<form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">";
                 if ($cont == $random)
                     echo "<input type=\"hidden\" name=\"oferta\" value=\"" . $fila['precio'] * $descuento . "\">";
                 echo "<input type=\"hidden\" name=\"carrito\" value=\"" . $fila['idProducto'] . "\">";

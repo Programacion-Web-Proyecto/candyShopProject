@@ -23,20 +23,7 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 if ($conexion->connect_errno) {
     die('Error en la conexion');
 } else {
-    if (isset($_POST['carrito'])) {
-        if (!isset($_SESSION['carrito'])) {
-            $_SESSION['carrito'] = array();
-        }
-        $carrito = $_POST['carrito'];
-        $oferta = (isset($_POST['oferta'])) ? $_POST['oferta'] : 0;
-        $prodCar = array();
-        $sql = "SELECT * FROM productos WHERE idProducto=" . $carrito . ";";
-        $resultado = $conexion->query($sql);
-        if ($fila = $resultado->fetch_assoc()) {
-            array_push($prodCar, $fila['idProducto'], $fila['nombreProducto'], $fila['categoria'], $fila['descripcion'], $fila['precio'], $fila['existencia'], $fila['archIMG'], $oferta);
-            array_push($_SESSION['carrito'], $prodCar);
-        }
-    } elseif (isset($_POST['quitarCarrito'])) {
+    if (isset($_POST['quitarCarrito'])) {
         $i = $_POST['quitarCarrito'];
         unset($_SESSION['carrito'][$i]);
         $aux = array_values($_SESSION['carrito']);
@@ -46,8 +33,8 @@ if ($conexion->connect_errno) {
 ?>
 <?php
     echo "<div class=\"container\">";
+    echo "<div><button onclick=\"document.location='consultas.php'\">regresar a ver productos</button></div>";
     echo "<legend>Elementos en el carrito</legend>";
-    "echo <div><button onclick=\"document.location='consultas.php'\"></button></div>";
     if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
         echo "<div class=\"consulta\">";
         for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
