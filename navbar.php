@@ -1,5 +1,6 @@
 <head>
   <link rel="stylesheet" href="css/style1.css" />
+
   <script src="https://kit.fontawesome.com/5d84975004.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
@@ -28,15 +29,13 @@ session_start(); //para poder hacer uso de las varaibles sesion
           <i class="fa-solid fa-cart-shopping"></i>
           </a>
           <div class="dropdown-menu submenu">
-            <a class="dropdown-item" href="#">1</a>
-            <a class="dropdown-item" href="#">2</a>
-            <a class="dropdown-item" href="#">3</a>
-            <a class="dropdown-item" href="#">4</a>
-            <a class="dropdown-item" href="#">5</a>
+            <a class="dropdown-item" href="#">ACIDOS</a>
+            <a class="dropdown-item" href="#">PICOSOS</a>
+            <a class="dropdown-item" href="#">CHOCOLATES</a>
 
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#">ACERCA DE</a>
+          <a class="nav-link" href="acercaDe.php">ACERCA DE</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contacto.php">CONTACTO</a>
