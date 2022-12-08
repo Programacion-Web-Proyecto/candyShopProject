@@ -37,17 +37,34 @@ if ($conexion->connect_errno) {
             array_push($_SESSION['carrito'], $prodCar);
         }
     }
-    $sql = "SELECT * FROM productos";
+    $sql = "SELECT categoria FROM productos GROUP BY categoria";
+    $catres = $conexion->query($sql); //diferenets categorias existentes
+    $filtroCat = (isset($_POST['filtro'])) ? $_POST['filtro'] : 1;
+    $sql = "SELECT * FROM productos WHERE " . $filtroCat;
     $resultado = $conexion->query($sql);
     $res = $conexion->query($sql);
     $contCarrito = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
 ?>
+    <script>
+        var seleccion = <?php echo json_encode($filtroCat); ?>;
+        $(document).ready(function() {
+            $("#filtro").val(seleccion);//al recargar la página establecemos como selección la opción anteriormente seleccionada
+        });
+    </script>
     <div class="container">
         <div class="carrito">
             <button onclick="document.location='index.php'">regresar</button>
-            <!-- <select name="filtro" id="filtro">
-
-            </select> -->
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <select name="filtro" id="filtro" onchange="this.form.submit()">
+                    <option value="1">Todos los productos</option>
+                    <?php
+                    while ($fila = $catres->fetch_assoc()) {
+                        echo "<option value=\"categoria='" .  $fila['categoria'] . "'\">"
+                            . $fila['categoria'] . "</option>";
+                    }
+                    ?>
+                </select>
+            </form>
             <div class="carritoIcon">
                 <i class="fa-solid fa-cart-shopping" onclick="document.location='carrito.php'" id="carritoIcon"></i>
                 <div class="numeroElementos">
