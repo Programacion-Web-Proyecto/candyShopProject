@@ -25,7 +25,7 @@ session_start(); //para poder hacer uso de las varaibles sesion
         </li>
         <li class="nav-item dropdown ">
           <a class="dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-expanded="false">
-            TIENDA
+          <i class="fa-solid fa-cart-shopping"></i>
           </a>
           <div class="dropdown-menu submenu">
             <a class="dropdown-item" href="#">1</a>
@@ -40,6 +40,9 @@ session_start(); //para poder hacer uso de las varaibles sesion
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contacto.php">CONTACTO</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contacto.php">AYUDA</a>
         </li>
         <?php
         if (($_SESSION["acceso"]) && $_SESSION["admin"]) {
