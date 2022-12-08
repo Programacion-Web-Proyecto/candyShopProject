@@ -59,6 +59,8 @@
             </div>
         </div>
     <?php
+    include "html/footer.html";
+
     } else {
         header("Location: index.php");
     }

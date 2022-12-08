@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.all {
+  background-color: #151515;
+}
+.contenedor {
+  display: flex;
+  width: 90%;
+
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding: 50px;
+  background-color: #4B1818;
+  border-radius: 30px;
+  color: #fff;
+  flex-wrap: wrap;
+}
+.contenedor p{
+  color: #000;
+  font-size: 18px;
+}
+
+.cont1 {
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 50px;
+  background-color: #faf3db;
+  border-radius: 20px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, auto);
+
+  grid-template-areas:
+    "header header header header"
+    "contenido contenido contenido image"
+    "contenido contenido contenido image"
+    "contenido contenido contenido image";
+}
+
+.cont1 .header {
+  /* background: #3f1288; */
+  background-color: #c94141;
+  justify-self: center;
+  grid-area: header;
+}
+.cont1 .contenido {
+  /* background: #9ada5e; */
+  text-align: justify;
+  grid-area: contenido;
+  margin-right: 50px;
+}
+.cont1 .image {
+  /* background: #ff830e; */
+  max-width: 400px;
+  grid-area: image;
+  justify-self: center;
+}
+
+.cont2 {
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 50px;
+  background-color: #faf3db;
+  border-radius: 20px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+
+  grid-template-areas:
+    "header2 header2 header2 "
+    "card1 card2 card3 "
+    "card1 card2 card3 "
+    "card1 card2 card3 ";
+}
+
+.cont2 .header2 {
+  background: #c94141;
+  text-align: center;
+
+  grid-area: header2;
+}
+.cont2 .card1 {
+  background: #c94141;
+  justify-self: center;
+
+  grid-area: card1;
+}
+.cont2 .card2 {
+  background: #c94141;
+  justify-self: center;
+  grid-area: card2;
+}
+.cont2 .card3 {
+  background: #c94141;
+  justify-self: center;
+  grid-area: card3;
+}
+
+
+@media screen and (max-width: 768px) {
+  .cont1 {
+    grid-template-areas:
+      "header header header header"
+      "contenido contenido contenido contenido"
+      "contenido contenido contenido contenido"
+      "image image image image";
+  }
+  .cont2 {
+    grid-template-areas:
+      "header2 header2 header2 "
+      "card1 card1 card1 "
+      "card2 card2 card2 "
+      "card3 card3 card3 ";
+  }
+
+}
