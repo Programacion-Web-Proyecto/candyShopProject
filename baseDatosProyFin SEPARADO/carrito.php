@@ -47,6 +47,7 @@ if ($conexion->connect_errno) {
 <?php
     echo "<div class=\"container\">";
     echo "<legend>Elementos en el carrito</legend>";
+    "echo <div><button onclick=\"document.location='consultas.php'\"></button></div>";
     if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
         echo "<div class=\"consulta\">";
         for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
