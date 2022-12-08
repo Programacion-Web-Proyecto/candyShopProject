@@ -20,6 +20,7 @@ form,
 }
 #carritoIcon {
     font-size: 40px;
+    color: #000;
 }
 .numeroElementos {
     background-color: red;
@@ -49,6 +50,9 @@ form,
     display: inline-block;
     left: 6px;
     top: 6px;
+    font-size: 30px;
+    background-color: inherit;
+    color: #000;
 }
 .tooltip .tooltiptext {
     visibility: hidden;
@@ -67,10 +71,6 @@ form,
 }
 .tooltip:hover .tooltiptext {
     visibility: visible;
-}
-.tooltip {
-    font-size: 30px;
-    background-color: inherit;
 }
 img {
     height: 250px;

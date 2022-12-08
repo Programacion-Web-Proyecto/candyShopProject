@@ -12,6 +12,7 @@ session_start();
     <link rel="stylesheet" href="css/stylesCarrito.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
+<script src="https://kit.fontawesome.com/b5e2972857.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <?php
 $servidor = 'localhost:3307';
@@ -35,15 +36,24 @@ if ($conexion->connect_errno) {
             array_push($prodCar, $fila['idProducto'], $fila['nombreProducto'], $fila['categoria'], $fila['descripcion'], $fila['precio'], $fila['existencia'], $fila['archIMG'], $oferta);
             array_push($_SESSION['carrito'], $prodCar);
         }
+    } elseif (isset($_POST['quitarCarrito'])) {
+        $i = $_POST['quitarCarrito'];
+        unset($_SESSION['carrito'][$i]);
+        $aux = array_values($_SESSION['carrito']);
+        unset($_SESSION['carrito']);
+        $_SESSION['carrito'] = array_values($aux);
     }
 ?>
 <?php
     echo "<div class=\"container\">";
     echo "<legend>Elementos en el carrito</legend>";
-    if (isset($_SESSION['carrito'])) {
+    if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
         echo "<div class=\"consulta\">";
         for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
             echo "<div class=\"producto\">";
+            echo "<form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">";
+            echo "<input type=\"hidden\" name=\"quitarCarrito\" value=\"" . $i . "\">";
+            echo "<button type=\"submit\" class=\"quitar tooltip\"><i class=\"fa-regular fa-trash-can\"><span class=\"tooltiptext\">Quitar del carrito</span></i></button></form>";
             echo "<img src=\"images/" . $_SESSION['carrito'][$i][6] . "\" alt=\"" . $_SESSION['carrito'][$i][1] . "\">";
             echo "<table>";
             echo "<tr><td><span class=\"titulo " . "\">Nombre: </span><span class=\"conten\">" . $_SESSION['carrito'][$i][1] . "</span></tr></td>";

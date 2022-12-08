@@ -41,3 +41,35 @@ img {
     color: rgb(255, 0, 0);
     font-weight: bold;
 }
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: rgba(199, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 14px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 0%;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    left: 6px;
+    top: 6px;
+    font-size: 30px;
+    background-color: inherit;
+    color: red;
+}
+.quitar {
+    padding: 0;
+    border: 0;
+}
