@@ -54,7 +54,7 @@
 						<p class="ccv"></p>
 					</div>
 				</div>
-				<p class="leyenda">Tarjeta Banco</p>
+				<p class="leyenda">Esta Tarjeta funciona a nivel nacionanl en TODAS PARTES y a nivel mundial en las redes. VISA O MASTERCARD</p>
 				<a href="#" class="link-banco">www.tubanco.com</a>
 			</div>
 		</section>
