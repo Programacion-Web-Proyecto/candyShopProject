@@ -48,7 +48,7 @@ if ($conexion->connect_errno) {
     <script>
         var seleccion = <?php echo json_encode($filtroCat); ?>;
         $(document).ready(function() {
-            $("#filtro").val(seleccion);//al recargar la página establecemos como selección la opción anteriormente seleccionada
+            $("#filtro").val(seleccion); //al recargar la página establecemos como selección la opción anteriormente seleccionada
         });
     </script>
     <div class="container">
@@ -87,6 +87,7 @@ if ($conexion->connect_errno) {
                 if ($cont == $random)
                     echo "<input type=\"hidden\" name=\"oferta\" value=\"" . $fila['precio'] * $descuento . "\">";
                 echo "<input type=\"hidden\" name=\"carrito\" value=\"" . $fila['idProducto'] . "\">";
+                echo "<input type=\"hidden\" name=\"filtro\" value=\"" . $filtroCat . "\">";
                 echo "<button type=\"submit\" class=\"agregar tooltip\"><i class=\"fa-solid fa-cart-plus\"><span class=\"tooltiptext\">Agregar al carrito</span></i></button></form>";
                 echo "<img src=\"images/" . $fila['archIMG'] . "\" alt=\"" . $fila['nombreProducto'] . "\">";
                 echo "<table>";
