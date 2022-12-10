@@ -57,6 +57,7 @@ if ($conexion->connect_errno) {
     <div class="container">
         <div id="divBajas">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="formBajas">
+                <legend>Eliminar registro</legend>
                 <select name="cualBajas" id="cualBajas" onchange="muestraSelecc(this.selectedIndex)">
                     <?php
                     $cont = 0;

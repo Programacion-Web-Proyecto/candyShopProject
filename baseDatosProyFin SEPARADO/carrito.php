@@ -30,6 +30,8 @@ if ($conexion->connect_errno) {
             for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
                 if ($_SESSION['carrito'][$i][0] == $fila['idProducto']) {
                     $_SESSION['carrito'][$i][5] = $fila['existencia'];
+                    //para que la cantidad de compra del producto no sobrepase la existencia del mismo
+                    if ($_SESSION['carrito'][$i][5] < $_SESSION['carrito'][$i][8]) $_SESSION['carrito'][$i][8] = $_SESSION['carrito'][$i][5];
                 }
             }
         }
@@ -52,7 +54,7 @@ if ($conexion->connect_errno) {
     } elseif (isset($_POST['suma'])) {
         $i = $_POST['cual'];
         $_SESSION['carrito'][$i][8]++;
-                    //para que la cantidad de compra del producto no sobrepase la existencia del mismo
+        //para que la cantidad de compra del producto no sobrepase la existencia del mismo
         if ($_SESSION['carrito'][$i][5] < $_SESSION['carrito'][$i][8]) $_SESSION['carrito'][$i][8] = $_SESSION['carrito'][$i][5];
     }
 ?>
