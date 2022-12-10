@@ -17,7 +17,7 @@
 				<div class="logo-marca" id="logo-marca">
 					<!-- <img src="img/logos/visa.png" alt=""> -->
 				</div>
-				<img src="img/chip-tarjeta.png" class="chip" alt="">
+				<img src="media/chip-tarjeta.png" class="chip" alt="">
 				<div class="datos">
 					<div class="grupo" id="numero">
 						<p class="label">Número Tarjeta</p>
