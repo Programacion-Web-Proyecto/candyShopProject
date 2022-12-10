@@ -29,6 +29,7 @@ session_start(); //para poder hacer uso de las varaibles sesion
           <i class="fa-solid fa-cart-shopping"></i>
           </a>
           <div class="dropdown-menu submenu">
+            <a class="dropdown-item" href="#">TIENDA</a>
             <a class="dropdown-item" href="#">ACIDOS</a>
             <a class="dropdown-item" href="#">PICOSOS</a>
             <a class="dropdown-item" href="#">CHOCOLATES</a>
