@@ -47,11 +47,11 @@
                 <div class="contenedor-preguntas activo" data-categoria="metodos-pago">
                     <div class="contenedor-pregunta">
                         <p class="pregunta">¿Cuáles son los métodos de pagos que tienen disponibles? <img src="./img/suma.svg" alt="Abrir Respuesta" /></p>
-                        <p class="respuesta">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit.</p>
+                        <p class="respuesta">Contamos con pagos por tarjeta (MASTERCARD O VISA) además de pagos mediante OXXO</p>
                     </div>
                     <div class="contenedor-pregunta">
                         <p class="pregunta">¿Mi pago es seguro? <img src="./img/suma.svg" alt="Abrir Respuesta" /></p>
-                        <p class="respuesta">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.</p>
+                        <p class="respuesta">Su pago es 100% seguro.</p>
                     </div>
                 </div>
 
@@ -59,11 +59,11 @@
                 <div class="contenedor-preguntas" data-categoria="entregas">
                     <div class="contenedor-pregunta">
                         <p class="pregunta">¿Cuentan con envió a domicilio? <img src="./img/suma.svg" alt="Abrir Respuesta" /></p>
-                        <p class="respuesta">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.</p>
+                        <p class="respuesta">Claro, contamos con envios nacionales e internacionales</p>
                     </div>
                     <div class="contenedor-pregunta">
                         <p class="pregunta">¿Cuál es el costo de envio a nivel nacional (MX)? <img src="./img/suma.svg" alt="Abrir Respuesta" /></p>
-                        <p class="respuesta">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.</p>
+                        <p class="respuesta">Es costo de envio promedio a nivel nacional es de $100. Si gastas más de $500 tu envio es gratis.</p>
                     </div>
                 </div>
 
@@ -71,11 +71,11 @@
                 <div class="contenedor-preguntas" data-categoria="seguridad">
                     <div class="contenedor-pregunta">
                         <p class="pregunta">¿Como puedo saber si son confiables? <img src="./img/suma.svg" alt="Abrir Respuesta" /></p>
-                        <p class="respuesta">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.</p>
+                        <p class="respuesta">Nuestras referencias en clientes nos respaldan.</p>
                     </div>
                     <div class="contenedor-pregunta">
                         <p class="pregunta">¿Que pasa con mis datos personales? <img src="./img/suma.svg" alt="Abrir Respuesta" /></p>
-                        <p class="respuesta">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.</p>
+                        <p class="respuesta">No se utilizaran para ningun otro tipo de información que no sea relacionada con tu pedido.</p>
                     </div>
                 </div>
 
@@ -83,11 +83,11 @@
                 <div class="contenedor-preguntas" data-categoria="cuenta">
                     <div class="contenedor-pregunta">
                         <p class="pregunta">¿Como puedo ver mis pedidos realizados? <img src="./img/suma.svg" alt="Abrir Respuesta" /></p>
-                        <p class="respuesta">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.</p>
+                        <p class="respuesta">En la nota de compra puedes ver tus pedidos realizados.</p>
                     </div>
                     <div class="contenedor-pregunta">
                         <p class="pregunta">¿Como puedo cambiar mi contraseña? <img src="./img/suma.svg" alt="Abrir Respuesta" /></p>
-                        <p class="respuesta">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.adipisicing elit. Voluptatum laborum porro voluptates, sequi aliquam mollitia! Nostrum eius iure sapiente, voluptates soluta adipisci, perferendis voluptatibus eligendi vel saepe harum. Consectetur, doloribus.</p>
+                        <p class="respuesta">En la parte de modificar contraseña.</p>
                     </div>
                 </div>
             </div>
