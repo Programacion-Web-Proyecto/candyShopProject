@@ -19,7 +19,7 @@
 .contenido2 {
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 90%;
   align-items: center;
   margin: 0 auto;
   margin-top: 30px;
@@ -60,7 +60,11 @@
   color: #fff;
 }
 
-.contacto >h2{
+.infoTienda {
+  color: #000;
+}
+
+.contacto >h2, .cont1>h2{
   text-align: center;
 }
 
@@ -72,4 +76,14 @@
 .formPago h2 {
   width: 90%;
   text-align: center;
+}
+
+.cont1 {
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 50px;
+  background-color: #faf3db;
+  border-radius: 20px;
+  color: #000;
 }
