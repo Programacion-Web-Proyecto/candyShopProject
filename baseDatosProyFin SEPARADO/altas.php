@@ -78,7 +78,7 @@ if ($conexion->connect_errno) {
                 <legend>Guardar registro</legend>
                 <label for="id">Id</label>
                 <input type="number" name="id" id="id" class="altas" min="1" max="999999" required>
-                <label for="nombre">Nombre</label>
+                <label for="nombre">Nombre(s)</label>
                 <input type="text" class="altas" name="nombre" id="nombre" required>
                 <label for="cat">Categoría</label>
                 <input type="text" class="altas" name="cat" id="cat" required>
