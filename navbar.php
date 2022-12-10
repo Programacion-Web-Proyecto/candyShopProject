@@ -25,7 +25,7 @@ session_start(); //para poder hacer uso de las varaibles sesion
           <a class="nav-link" href="index.php">INICIO</a>
         </li>
         <li class="nav-item dropdown ">
-          <a class="dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-expanded="false">
+          <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-cart-shopping"></i>
           </a>
           <div class="dropdown-menu submenu">
