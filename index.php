@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style3.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 
@@ -28,8 +29,27 @@
     }
     date_default_timezone_set('America/Mexico_City');
     echo "Ultima actualizacion: " . date("F d Y H:i:s.", filemtime(__FILE__));
-
     ?>
+    <script>
+        function entrada() {
+    swal( {
+      title: "Suscribete ahora!",
+      text: "Ingresa tu correo",
+      content: "input",
+      buttons:["CANCELAR", "SUSCRIBIRME"],
+       
+    }).then((value) => {
+      if (!value) throw null;
+        var direccion = value;
+        swal(`You typed: ${direccion}`);
+      
+        
+      
+    });
+  }
+
+  entrada();
+    </script>
 
 
     <?php
