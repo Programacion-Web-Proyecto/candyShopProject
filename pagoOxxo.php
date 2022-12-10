@@ -1,7 +1,7 @@
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link href="./opps_es_files/style7.css" media="all" rel="stylesheet" type="text/css">
-
+		<link href="css/style7.css" media="all" rel="stylesheet" type="text/css">
+		<title>Pago Oxxo</title>
 	</head>
 	<body>
 		<div class="opps">
@@ -17,7 +17,12 @@
 				</div>
 				<div class="opps-reference">
 					<h3>Referencia</h3>
-					<h1>0000-0000-0000-00</h1>
+					<h1><?php  
+					$a=mt_rand(1000,9999); 
+					$b=mt_rand(1000,9999); 
+					$c=mt_rand(1000,9999); 
+					$d=mt_rand(10,99); 
+					echo $a,"-",$b,"-",$c,"-",$d ;?></h1>
 				</div>
 			</div>
 			<div class="opps-instructions">
@@ -33,4 +38,7 @@
 			</div>
 		</div>	
     </body>
+	<?php
+    include "html/footer.html";
+    ?>
 </html>	

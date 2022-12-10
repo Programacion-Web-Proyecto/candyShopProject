@@ -102,4 +102,7 @@
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="js/mainTarjeta.js"></script>
 </body>
+<?php
+    include "html/footer.html";
+    ?>
 </html>
