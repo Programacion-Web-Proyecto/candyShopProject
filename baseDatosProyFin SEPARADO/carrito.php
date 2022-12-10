@@ -23,12 +23,37 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 if ($conexion->connect_errno) {
     die('Error en la conexion');
 } else {
+    $sql = "SELECT idProducto,existencia FROM productos";
+    $resultado = $conexion->query($sql);
+    if (isset($_SESSION['carrito'])) {
+        while ($fila = $resultado->fetch_assoc()) { //para actualizar la existencia de los productos
+            for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+                if ($_SESSION['carrito'][$i][0] == $fila['idProducto']) {
+                    $_SESSION['carrito'][$i][5] = $fila['existencia'];
+                }
+            }
+        }
+    }
     if (isset($_POST['quitarCarrito'])) {
         $i = $_POST['quitarCarrito'];
         unset($_SESSION['carrito'][$i]);
         $aux = array_values($_SESSION['carrito']);
         unset($_SESSION['carrito']);
         $_SESSION['carrito'] = array_values($aux);
+    } elseif (isset($_POST['resta'])) {
+        $i = $_POST['cual'];
+        $_SESSION['carrito'][$i][8]--;
+        if ($_SESSION['carrito'][$i][8] < 1) {
+            unset($_SESSION['carrito'][$i]);
+            $aux = array_values($_SESSION['carrito']);
+            unset($_SESSION['carrito']);
+            $_SESSION['carrito'] = array_values($aux);
+        }
+    } elseif (isset($_POST['suma'])) {
+        $i = $_POST['cual'];
+        $_SESSION['carrito'][$i][8]++;
+                    //para que la cantidad de compra del producto no sobrepase la existencia del mismo
+        if ($_SESSION['carrito'][$i][5] < $_SESSION['carrito'][$i][8]) $_SESSION['carrito'][$i][8] = $_SESSION['carrito'][$i][5];
     }
 ?>
 <?php
@@ -52,9 +77,19 @@ if ($conexion->connect_errno) {
             } else
                 echo "<tr><td><span class=\"titulo " . "\">Precio: </span><span class=\"conten\">$" . $_SESSION['carrito'][$i][4] . "</span></tr></td>";
             echo "<tr><td><span class=\"titulo " . "\">Existencia: </span><span class=\"conten\">" . $_SESSION['carrito'][$i][5] . "</span></tr></td>";
+            echo "<tr><td><span class=\"titulo " . "\">Cantidad </span>
+            <form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">
+            <button type=\"submit\" name=\"resta\">-</button>
+            <input type=\"hidden\" name=\"cual\" value=\"" . $i . "\">
+            <span class=\"conten\">" . $_SESSION['carrito'][$i][8] . "</span>
+            <button type=\"submit\" name=\"suma\">+</button>
+            </form></tr></td>";
             echo "</table></div>";
         }
         echo "</div>";
+        echo "<div class=\"compra\">
+        <button onclick=\"document.location='realizarCompra.php'\">Realizar Compra</button>
+        </div>";
     } else {
         echo "<legend style=\"color: gray;\">Carrito vacío</legend>";
     }

@@ -30,11 +30,32 @@ if ($conexion->connect_errno) {
         $carrito = $_POST['carrito'];
         $oferta = (isset($_POST['oferta'])) ? $_POST['oferta'] : 0;
         $prodCar = array();
+        $sql = "SELECT idProducto,existencia FROM productos";
+        $resultado = $conexion->query($sql);
+        while ($fila = $resultado->fetch_assoc()) { //para actualizar la existencia de los productos
+            for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+                if ($_SESSION['carrito'][$i][0] == $fila['idProducto']) {
+                    $_SESSION['carrito'][$i][5] = $fila['existencia'];
+                }
+            }
+        }
         $sql = "SELECT * FROM productos WHERE idProducto=" . $carrito . ";";
         $resultado = $conexion->query($sql);
+        $yaHay = false;
         if ($fila = $resultado->fetch_assoc()) {
-            array_push($prodCar, $fila['idProducto'], $fila['nombreProducto'], $fila['categoria'], $fila['descripcion'], $fila['precio'], $fila['existencia'], $fila['archIMG'], $oferta);
-            array_push($_SESSION['carrito'], $prodCar);
+            for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+                if ($_SESSION['carrito'][$i][0] == $carrito && $_SESSION['carrito'][$i][7] == $oferta) {
+                    $_SESSION['carrito'][$i][8]++;
+                    //para que la cantidad de compra del producto no sobrepase la existencia del mismo
+                    if ($_SESSION['carrito'][$i][5] < $_SESSION['carrito'][$i][8]) $_SESSION['carrito'][$i][8] = $_SESSION['carrito'][$i][5];
+                    $yaHay = true;
+                    break;
+                }
+            }
+            if (!$yaHay) {              //0                     //1                     //2                 //3                 //4                 //5             //6                 //7   //8
+                array_push($prodCar, $fila['idProducto'], $fila['nombreProducto'], $fila['categoria'], $fila['descripcion'], $fila['precio'], $fila['existencia'], $fila['archIMG'], $oferta, 1);
+                array_push($_SESSION['carrito'], $prodCar);
+            }
         }
     }
     $sql = "SELECT categoria FROM productos GROUP BY categoria";
@@ -48,7 +69,7 @@ if ($conexion->connect_errno) {
     <script>
         var seleccion = <?php echo json_encode($filtroCat); ?>;
         $(document).ready(function() {
-            $("#filtro").val(seleccion);//al recargar la página establecemos como selección la opción anteriormente seleccionada
+            $("#filtro").val(seleccion); //al recargar la página establecemos como selección la opción anteriormente seleccionada
         });
     </script>
     <div class="container">
@@ -87,6 +108,7 @@ if ($conexion->connect_errno) {
                 if ($cont == $random)
                     echo "<input type=\"hidden\" name=\"oferta\" value=\"" . $fila['precio'] * $descuento . "\">";
                 echo "<input type=\"hidden\" name=\"carrito\" value=\"" . $fila['idProducto'] . "\">";
+                echo "<input type=\"hidden\" name=\"filtro\" value=\"" . $filtroCat . "\">";
                 echo "<button type=\"submit\" class=\"agregar tooltip\"><i class=\"fa-solid fa-cart-plus\"><span class=\"tooltiptext\">Agregar al carrito</span></i></button></form>";
                 echo "<img src=\"images/" . $fila['archIMG'] . "\" alt=\"" . $fila['nombreProducto'] . "\">";
                 echo "<table>";
