@@ -73,3 +73,7 @@ img {
     padding: 0;
     border: 0;
 }
+.compra{
+    display: flex;
+    justify-content: end;
+}
