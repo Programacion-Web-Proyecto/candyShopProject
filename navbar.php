@@ -41,7 +41,7 @@ session_start(); //para poder hacer uso de las varaibles sesion
           <a class="nav-link" href="contacto.php">CONTACTO</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contacto.php">AYUDA</a>
+          <a class="nav-link" href="ayuda.php">AYUDA</a>
         </li>
         <?php
         if (($_SESSION["acceso"]) && $_SESSION["admin"]) {
