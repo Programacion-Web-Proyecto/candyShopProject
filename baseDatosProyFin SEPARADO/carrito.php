@@ -25,10 +25,12 @@ if ($conexion->connect_errno) {
 } else {
     $sql = "SELECT idProducto,existencia FROM productos";
     $resultado = $conexion->query($sql);
-    while ($fila = $resultado->fetch_assoc()) { //para actualizar la existencia de los productos
-        for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
-            if ($_SESSION['carrito'][$i][0] == $fila['idProducto']) {
-                $_SESSION['carrito'][$i][5] = $fila['existencia'];
+    if (isset($_SESSION['carrito'])) {
+        while ($fila = $resultado->fetch_assoc()) { //para actualizar la existencia de los productos
+            for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+                if ($_SESSION['carrito'][$i][0] == $fila['idProducto']) {
+                    $_SESSION['carrito'][$i][5] = $fila['existencia'];
+                }
             }
         }
     }
@@ -85,6 +87,9 @@ if ($conexion->connect_errno) {
             echo "</table></div>";
         }
         echo "</div>";
+        echo "<div class=\"compra\">
+        <button onclick=\"document.location='realizarCompra.php'\">Realizar Compra</button>
+        </div>";
     } else {
         echo "<legend style=\"color: gray;\">Carrito vacío</legend>";
     }
@@ -96,12 +101,3 @@ if ($conexion->connect_errno) {
 </body>
 
 </html>
-<script>
-    function resta(cual) {
-        <?php ?>
-    }
-
-    function suma(cual) {
-
-    }
-</script>
