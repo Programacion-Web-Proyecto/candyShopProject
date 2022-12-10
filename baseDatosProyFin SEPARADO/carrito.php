@@ -23,6 +23,15 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 if ($conexion->connect_errno) {
     die('Error en la conexion');
 } else {
+    $sql = "SELECT idProducto,existencia FROM productos";
+    $resultado = $conexion->query($sql);
+    while ($fila = $resultado->fetch_assoc()) { //para actualizar la existencia de los productos
+        for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+            if ($_SESSION['carrito'][$i][0] == $fila['idProducto']) {
+                $_SESSION['carrito'][$i][5] = $fila['existencia'];
+            }
+        }
+    }
     if (isset($_POST['quitarCarrito'])) {
         $i = $_POST['quitarCarrito'];
         unset($_SESSION['carrito'][$i]);
@@ -52,6 +61,7 @@ if ($conexion->connect_errno) {
             } else
                 echo "<tr><td><span class=\"titulo " . "\">Precio: </span><span class=\"conten\">$" . $_SESSION['carrito'][$i][4] . "</span></tr></td>";
             echo "<tr><td><span class=\"titulo " . "\">Existencia: </span><span class=\"conten\">" . $_SESSION['carrito'][$i][5] . "</span></tr></td>";
+            echo "<tr><td><span class=\"titulo " . "\">Cantidad </span><button>-</button><span class=\"conten\">" . $_SESSION['carrito'][$i][8] . "</span><button>+</button></tr></td>";
             echo "</table></div>";
         }
         echo "</div>";
