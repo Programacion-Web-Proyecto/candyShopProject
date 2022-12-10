@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="css/style5.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <title>Sobre Nosotros</title>
+    <title>Preguntas Frecuentes</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
 </head>
@@ -48,8 +48,9 @@
                         <p>Cuenta</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="preguntas">
+                    <div class="preguntas">
 
                     <!-- Preguntas Metodos de pago -->
                     <div class="contenedor-preguntas activo" data-categoria="metodos-pago">
