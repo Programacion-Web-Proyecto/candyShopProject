@@ -38,6 +38,20 @@ if ($conexion->connect_errno) {
         $aux = array_values($_SESSION['carrito']);
         unset($_SESSION['carrito']);
         $_SESSION['carrito'] = array_values($aux);
+    } elseif (isset($_POST['resta'])) {
+        $i = $_POST['cual'];
+        $_SESSION['carrito'][$i][8]--;
+        if ($_SESSION['carrito'][$i][8] < 1) {
+            unset($_SESSION['carrito'][$i]);
+            $aux = array_values($_SESSION['carrito']);
+            unset($_SESSION['carrito']);
+            $_SESSION['carrito'] = array_values($aux);
+        }
+    } elseif (isset($_POST['suma'])) {
+        $i = $_POST['cual'];
+        $_SESSION['carrito'][$i][8]++;
+                    //para que la cantidad de compra del producto no sobrepase la existencia del mismo
+        if ($_SESSION['carrito'][$i][5] < $_SESSION['carrito'][$i][8]) $_SESSION['carrito'][$i][8] = $_SESSION['carrito'][$i][5];
     }
 ?>
 <?php
@@ -61,7 +75,13 @@ if ($conexion->connect_errno) {
             } else
                 echo "<tr><td><span class=\"titulo " . "\">Precio: </span><span class=\"conten\">$" . $_SESSION['carrito'][$i][4] . "</span></tr></td>";
             echo "<tr><td><span class=\"titulo " . "\">Existencia: </span><span class=\"conten\">" . $_SESSION['carrito'][$i][5] . "</span></tr></td>";
-            echo "<tr><td><span class=\"titulo " . "\">Cantidad </span><button>-</button><span class=\"conten\">" . $_SESSION['carrito'][$i][8] . "</span><button>+</button></tr></td>";
+            echo "<tr><td><span class=\"titulo " . "\">Cantidad </span>
+            <form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">
+            <button type=\"submit\" name=\"resta\">-</button>
+            <input type=\"hidden\" name=\"cual\" value=\"" . $i . "\">
+            <span class=\"conten\">" . $_SESSION['carrito'][$i][8] . "</span>
+            <button type=\"submit\" name=\"suma\">+</button>
+            </form></tr></td>";
             echo "</table></div>";
         }
         echo "</div>";
@@ -76,3 +96,12 @@ if ($conexion->connect_errno) {
 </body>
 
 </html>
+<script>
+    function resta(cual) {
+        <?php ?>
+    }
+
+    function suma(cual) {
+
+    }
+</script>
