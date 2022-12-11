@@ -14,5 +14,5 @@ if (date("G")>5 && date("G")<12){
     $bienvenida="Buenas noches!  <br>". $_SESSION["usuario"]; 
 }
 
-echo '<li class="nav-item  " style="text-align: left; color: #fff; font-size:20px;">'.$bienvenida. '</li>';
+echo '<li class="nav-item  " style="text-align: left; color: #fff; font-size:20px; padding-right: 100px;">'.$bienvenida. '</li>';
 ?>
