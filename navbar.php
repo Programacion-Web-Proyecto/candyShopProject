@@ -57,12 +57,12 @@ $contCarrito = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
         }
         ?>
       </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
         <?php
         if (($_SESSION["acceso"])) {
           include "saludo.php";
         }
         ?>
+      <!-- <form class="form-inline my-2 my-lg-0">
       </form> -->
     </div>
   </nav>
