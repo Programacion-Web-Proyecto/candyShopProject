@@ -39,8 +39,36 @@ html {
   border-radius: 30px;
   color: #000;
 }
+.cont1 {
+  width: 80%;
+  margin: 20px auto;
+  padding: 50px;
+  background-color: #faf3db;
+  border-radius: 20px;
+  color: #000;
+}
+.cont2{
+  display: flex;
+  margin: 20px auto;
+
+  align-self: center;
+  justify-content: center;
+  width: 90%;
 
 
+}
+
+.cont1 >h2{
+  text-align: center;
+}
+.btnCupon{
+  width: 500px;
+  background-image:url("../media/papel.jpg") ;
+}
+.btnCupon>img{
+  width: 500px;
+
+}
 .cont{
   width: 100%;
   /* margin: 20px auto; */
@@ -58,7 +86,32 @@ html {
     "card1 card2 card3 card4"
     "card1 card2 card3 card4";
 }
+.cont3{
+  width: 100%;
+  /* margin: 20px auto; */
+  /* padding: 30px; */
+  background-color: #faf3db;
+  border-radius: 20px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, auto);
 
+  grid-template-areas:
+    "cupon1 cupon2";
+}
+.cont3 .cupon1{
+  grid-area: cupon1;
+  width: 350px;
+  align-self: center;
+  justify-self: center;
+}
+.cont3 .cupon2{
+  grid-area: cupon2;
+  width: 350px;
+  align-self: center;
+  justify-self: center;
+}
 
 .contenedor > div,
 .contenedor .header{
@@ -174,3 +227,4 @@ html {
       "card4 card4 card4 ";
   }
 }
+

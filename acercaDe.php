@@ -58,14 +58,11 @@
             <div class="card card3" style="width: 18rem;">
                 <img src="media/valoresImg.webp" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">VALORES</h5>
-                    <p class="card-text"> Honestidad, Trabajo en equipo, Integridad, Familia, 
-                        Socialmente Responsable, Creativos, Entusiastas, Innovadores, Impulsores, Calidad
-                        Liderazgo,
-                        Compromiso,
-                        Puntualidad,
-                        Respeto,
-                        Responsabilidad</p>
+                    <h5 class="card-title">OBJETIVOS</h5>
+                    <p class="card-text"> Llegar a una cifra de 250.000 clientes en año 2025.
+                        Garantizar a nuestros clientes, productos de excelente calidad.
+                        Hacer y vender productos innovadores, deliciosos y con bajo costo.
+                        Generar fuente de trabajo para Aguascalientes.</p>
                 </div>
             </div>
         </div>

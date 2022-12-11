@@ -21,95 +21,104 @@
     });
 </script>
 <?php
-include "navbar.php";
-// $servidor = 'localhost:3307';
-$servidor = 'localhost:33065';
-$cuenta = 'root';
-$password = '';
-$bd = 'tienda2';
-$conexion = new mysqli($servidor, $cuenta, $password, $bd);
-if ($conexion->connect_errno) {
-    die('Error en la conexion');
-} else {
-    if (isset($_POST['eliminar'])) {
-        $sql = "SELECT archIMG FROM productos WHERE idProducto=" . $_POST['cualBajas'];
-        $resultado = $conexion->query($sql);
-        $sql = "DELETE FROM productos WHERE idProducto=" . $_POST['cualBajas'];
-        $conexion->query($sql);
-        $elimino = 0;
-        if ($conexion->affected_rows) {
-            $fila = $resultado->fetch_assoc();
-            $ARCH = "images/" . $fila['archIMG'];
-            if (file_exists($ARCH)) {
-                $file = fopen($ARCH, 'r');
-                fclose($file);
-                unlink($ARCH);
+session_start(); //para poder hacer uso de las varaibles sesion 
+
+if (($_SESSION["acceso"]) && $_SESSION["admin"]) {
+    include "navbar.php";
+    // $servidor = 'localhost:3307';
+    $servidor = 'localhost:33065';
+    $cuenta = 'root';
+    $password = '';
+    $bd = 'tienda2';
+    $conexion = new mysqli($servidor, $cuenta, $password, $bd);
+    if ($conexion->connect_errno) {
+        die('Error en la conexion');
+    } else {
+        if (isset($_POST['eliminar'])) {
+            $sql = "SELECT archIMG FROM productos WHERE idProducto=" . $_POST['cualBajas'];
+            $resultado = $conexion->query($sql);
+            $sql = "DELETE FROM productos WHERE idProducto=" . $_POST['cualBajas'];
+            $conexion->query($sql);
+            $elimino = 0;
+            if ($conexion->affected_rows) {
+                $fila = $resultado->fetch_assoc();
+                $ARCH = "images/" . $fila['archIMG'];
+                if (file_exists($ARCH)) {
+                    $file = fopen($ARCH, 'r');
+                    fclose($file);
+                    unlink($ARCH);
+                }
+                $elimino++;
             }
-            $elimino++;
+            if ($elimino) {
+                echo "<script>alert(\"registro eliminado\")</script>";
+            } else {
+                echo "<script>alert(\"NO SE ELIMINÓ NINGÚN REGISTRO\")</script>";
+            }
         }
-        if ($elimino) {
-            echo "<script>alert(\"registro eliminado\")</script>";
-        } else {
-            echo "<script>alert(\"NO SE ELIMINÓ NINGÚN REGISTRO\")</script>";
-        }
+        $sql = "SELECT * FROM productos";
+        $resultado = $conexion->query($sql);
     }
-    $sql = "SELECT * FROM productos";
-    $resultado = $conexion->query($sql);
-}
 ?>
 
-<body>
-    <div class="container1">
-        <div id="divBajas">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="formBajas">
-                <legend>Eliminar registro</legend>
-                <select name="cualBajas" id="cualBajas" onchange="muestraSelecc(this.selectedIndex)">
-                    <?php
-                    $cont = 0;
-                    $productos = array();
-                    while ($fila = $resultado->fetch_assoc()) {
-                        array_push($productos, $fila);
-                        echo '<option value="' . $fila['idProducto'] . '">'
-                            . $fila["nombreProducto"] . '</option>';
-                    }
-                    ?>
-                </select>
-            </form>
-            <div class="borde">
-                <table>
-                    <tr>
-                        <td><span class="titulo">Id: </span><span class="contenido" id="sId"></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="titulo">Nombre: </span><span class="contenido" id="sNombre"></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="titulo">Categoría: </span><span class="contenido" id="sCat"></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="titulo">Descripción: </span><span class="contenido" id="sDesc"></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="titulo">Existencia: </span><span class="contenido" id="sExis"></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="titulo">Precio: </span><span class="contenido" id="sPrecio"></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="titulo">Ventas: </span><span class="contenido" id="sVentas"></span></td>
-                    </tr>
-                </table>
-                <img src="" alt="" id="sImg" class="imgProd">
-            </div>
-            <div class="botones">
-                <button class="regresar" onclick="document.location='menuAdmin.php'">Regresar</button>
-                <input type="submit" value="eliminar registro" name="eliminar" form="formBajas" id="eliminar">
+    <body>
+        <div class="container1">
+            <div id="divBajas">
+                <br>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="formBajas">
+                    <legend>Eliminar registro</legend>
+                    <select name="cualBajas" id="cualBajas" onchange="muestraSelecc(this.selectedIndex)">
+                        <?php
+                        $cont = 0;
+                        $productos = array();
+                        while ($fila = $resultado->fetch_assoc()) {
+                            array_push($productos, $fila);
+                            echo '<option value="' . $fila['idProducto'] . '">'
+                                . $fila["nombreProducto"] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </form>
+                <div class="borde">
+                    <table>
+                        <tr>
+                            <td><span class="titulo">Id: </span><span class="contenido" id="sId"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="titulo">Nombre: </span><span class="contenido" id="sNombre"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="titulo">Categoría: </span><span class="contenido" id="sCat"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="titulo">Descripción: </span><span class="contenido" id="sDesc"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="titulo">Existencia: </span><span class="contenido" id="sExis"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="titulo">Precio: </span><span class="contenido" id="sPrecio"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="titulo">Ventas: </span><span class="contenido" id="sVentas"></span></td>
+                        </tr>
+                    </table>
+                    <img src="" alt="" id="sImg" class="imgProd">
+                </div>
+                <div class="botones">
+                    <button class="regresar btn btn-primary" onclick="document.location='menuAdmin.php'">Regresar</button>
+                    <input class="btn btn-danger" type="submit" value="eliminar registro" name="eliminar" form="formBajas" id="eliminar">
+                </div>
+                <br>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 
-<?php include 'html/footer.html'; ?>
+<?php include 'html/footer.html';
+} else {
+    header("Location:index.php");
+}
+?>
 
 </html>
 <script>
