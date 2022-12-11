@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/style3.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 </head>
 
 <body>
@@ -90,6 +89,16 @@
         </div>
     </div>
     <br />
+    <div class="cont1">
+        <h2>Por temporada navideña tenemos un regalo para ti!</h2><br>
+        <div class="cont2" id="regalo">
+
+            <button type="button" class="btnCupon" onclick="sorpresa()"><img src="media/liston.png" alt=""></button>
+        
+        </div>
+        
+    </div>
+    <br>
     <div class="contenedor">
         <div class="cont">
             <div class="card card1" style="width: 16rem;">
@@ -101,7 +110,7 @@
             <div class="card card2" style="width: 16rem;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fa-solid fa-box iconos"></i></h5>
-                    <p class="card-text">  Ventas por mayoreo (Personalizadas)</p>
+                    <p class="card-text"> Ventas por mayoreo (Personalizadas)</p>
                 </div>
             </div>
             <div class="card card3" style="width: 16rem;">
@@ -109,19 +118,30 @@
                     <h5 class="card-title"><i class="fa-solid fa-truck iconos"></i></h5>
                     <p class="card-text"> Envíos Rápidos y Seguros </p>
                 </div>
-            </div>    
+            </div>
             <div class="card card4" style="width: 16rem;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fa-solid fa-tag iconos"></i></h5>
                     <p class="card-text"> Productos nuevos cada semana</p>
                 </div>
-            </div>    
+            </div>
         </div>
-    </div>   
+    </div>
     <br />
 
 
-
+    <script>
+        function sorpresa() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("regalo").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "cupones.php", true);
+            xhttp.send();
+        }
+    </script>
 
 
     <?php
@@ -161,7 +181,7 @@
 
             $mail->Subject = 'Gracias por suscribirte!';
 
-            $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario! :NAVIDAD22';
+            $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario! :WELCOMEFAMILY22';
 
             $mail->send();
 
