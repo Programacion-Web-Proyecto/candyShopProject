@@ -19,8 +19,8 @@
 
         if (!empty($_COOKIE["captcha"]) && $_COOKIE["captcha"] == sha1($_POST["respuesta"])) {
             echo "<br> Captcha Correcto<br><br>";
-            $servidor = ':33065';
-            // $servidor = ':3307';
+            // $servidor = ':33065';
+            $servidor = ':3307';
             $cuenta = 'root';
             $password = '';
             $bd = 'candy_info';
