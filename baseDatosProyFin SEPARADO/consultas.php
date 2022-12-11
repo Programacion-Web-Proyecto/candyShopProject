@@ -112,7 +112,7 @@ if ($conexion->connect_errno) {
                     echo "<input type=\"hidden\" name=\"oferta\" value=\"" . $fila['precio'] * $descuento . "\">";
                 echo "<input type=\"hidden\" name=\"carrito\" value=\"" . $fila['idProducto'] . "\">";
                 echo "<input type=\"hidden\" name=\"filtro\" value=\"" . $filtroCat . "\">";
-                echo "<button type=\"submit\" class=\"agregar tooltip\"><i class=\"fa-solid fa-cart-plus\"><span class=\"tooltiptext\">Agregar al carrito</span></i></button></form>";
+                echo "<button type=\"submit\" class=\"agregar tooltip\"><span class=\"tooltiptext\">Agregar al carrito</span></i></button></form>";
                 echo "<img src=\"images/" . $fila['archIMG'] . "\" alt=\"" . $fila['nombreProducto'] . "\">";
                 echo "<table>";
                 echo "<tr><td><span class=\"titulo " . "\">Nombre: </span><span class=\"conten\">" . $fila['nombreProducto'] . "</span></tr></td>";
