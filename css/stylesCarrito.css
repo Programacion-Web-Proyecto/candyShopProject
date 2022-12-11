@@ -37,7 +37,7 @@ form,
   background-color: #faf3db;
 }
 .imgProd {
-  height: 250px;
+  height: 200px;
   width: 100%;
   object-fit: contain;
 }
@@ -83,7 +83,7 @@ form,
 }
 .compra {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   padding: 30px;
 }
 .sumres {
@@ -94,9 +94,22 @@ form,
   border-radius: 6px;
 }
 legend {
-    margin-top: 20px;
+  margin-top: 20px;
   color: white;
   text-align: center;
   font-size: 30px;
   background-color: #c94141;
+}
+.totPagar {
+  background-color: #6c0000;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding:10px;
+  border-radius: 6px;
+}
+
+.titulo {
+  font-weight: bold;
 }
