@@ -1,0 +1,88 @@
+* {
+    font-family: "Montserrat", sans-serif;
+}
+body,
+html,
+form,
+.container1,
+.carrito {
+    margin: 0;
+    width: 100%;
+}
+.container1 {
+    padding: 20px;
+    box-sizing: border-box;
+}
+.carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.consulta {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 10px;
+}
+.producto {
+    border: 2px solid black;
+    border-radius: 15px;
+}
+.tooltip1000,.carritoAgregar {
+    position: relative;
+    display: inline-block;
+    left: 6px;
+    top: 6px;
+    font-size: 30px;
+    background-color: inherit;
+    color: #000;
+}
+.tooltip1000 .tooltiptext1000 {
+    visibility: hidden;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 14px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 0%;
+}
+.tooltip1000:hover .tooltiptext1000 {
+    visibility: visible;
+}
+.imagProd {
+    height: 250px;
+    width: 100%;
+    object-fit: contain;
+}
+.imagProd:hover {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: 270px;
+    object-fit: contain;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+}
+.imgCar{
+    height: 30px;
+}
+.titulo {
+    font-weight: bold;
+}
+.agregar {
+    padding: 0;
+    border: 0;
+}
+.noOferta {
+    color: gray;
+    text-decoration: line-through;
+}
+.oferta {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+}
