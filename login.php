@@ -19,7 +19,8 @@
 
         if (!empty($_COOKIE["captcha"]) && $_COOKIE["captcha"] == sha1($_POST["respuesta"])) {
             echo "<br> Captcha Correcto<br><br>";
-            $servidor = ':33065';
+            // $servidor = ':33065';
+            $servidor = ':3307';
             $cuenta = 'root';
             $password = '';
             $bd = 'candy_info';
@@ -117,7 +118,7 @@
 
             # Luego de haber obtenido los valores, ya podemos comprobar:
             //ADMIN
-            if ($band == 1 && $user == 'ADMIN') {
+            if ($band == 1 && $nomUsr == 'ADMIN') {
                 session_start();
                 $_SESSION["admin"] = true;
                 $_SESSION["acceso"] = true;

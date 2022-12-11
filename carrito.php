@@ -10,8 +10,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARRITO DE COMPRA</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/stylesCarrito.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylesCarrito.css">
 </head>
 <script src="https://kit.fontawesome.com/b5e2972857.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -63,7 +63,6 @@ if ($conexion->connect_errno) {
 ?>
 <?php
     echo "<div class=\"container1\">";
-    echo "<div><button onclick=\"document.location='consultas.php'\">regresar a ver productos</button></div>";
     echo "<legend>Elementos en el carrito</legend>";
     if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
         echo "<div class=\"consulta\">";
@@ -96,7 +95,7 @@ if ($conexion->connect_errno) {
         <button onclick=\"document.location='realizarCompra.php'\">Realizar Compra</button>
         </div>";
     } else {
-        echo "<legend style=\"color: gray;\">Carrito vacío</legend>";
+        echo "<legend style=\"color: gray; text-align:center;\"><i class=\"fa-solid fa-triangle-exclamation\" style=\"font-size:400px;\"></i><br>Carrito vacío</legend>";
     }
     echo "</div>";
 }

@@ -46,7 +46,8 @@ $contCarrito = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
         </li>
         <?php
         if (($_SESSION["acceso"]) && $_SESSION["admin"]) {
-          echo '<li class="nav-item"><a class="nav-link" href="#">INFORMACION USUARIOS</a></li>';
+          // echo '<li class="nav-item"><a class="nav-link" href="#">INFORMACION USUARIOS</a></li>';
+          echo '<li class="nav-item"><a class="nav-link" href="menuAdmin.php">ADMIN</a></li>';
         }
         if (!($_SESSION["acceso"])) {
 
