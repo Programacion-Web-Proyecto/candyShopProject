@@ -8,6 +8,15 @@ form,
 .carrito {
     margin: 0;
     width: 100%;
+            background-color: #151515;
+}
+.busquedaBarra{
+    width: 20rem;
+}
+.formProd{
+    background-color: #faf3db;
+    border-top-left-radius: 15px ;
+    border-top-right-radius: 15px ;
 }
 .container1 {
     padding: 20px;
@@ -24,8 +33,10 @@ form,
     grid-gap: 10px;
 }
 .producto {
-    border: 2px solid black;
+    border: 5px solid #faebbe;
     border-radius: 15px;
+    background-color: #faf3db;
+    
 }
 .tooltip1000,.carritoAgregar {
     position: relative;
@@ -33,7 +44,7 @@ form,
     left: 6px;
     top: 6px;
     font-size: 30px;
-    background-color: inherit;
+    background-color: #faf3db;
     color: #000;
 }
 .tooltip1000 .tooltiptext1000 {

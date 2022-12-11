@@ -14,7 +14,7 @@ $contCarrito = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
 ?>
 
 <body>
-  <nav class="navbar navbar-expand-lg sticky-top" style="background: #6C0000;">
+  <nav class="navbar navbar-expand-lg sticky-top navprin" style="background: #6C0000;">
 
     <a class="navbar-brand aNav" href=""><img style="width: 50px;" src="media/logo.jpeg" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,13 +57,13 @@ $contCarrito = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
         }
         ?>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <!-- <form class="form-inline my-2 my-lg-0">
         <?php
         if (($_SESSION["acceso"])) {
           include "saludo.php";
         }
         ?>
-      </form>
+      </form> -->
     </div>
   </nav>
 </body>

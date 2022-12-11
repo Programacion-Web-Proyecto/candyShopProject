@@ -5,7 +5,7 @@
   /* font-family: "Open Sans", sans-serif; */
 }
 
-nav {
+.navprin {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -13,7 +13,7 @@ nav {
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 9999;
 }
 
 .colorNav {

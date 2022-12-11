@@ -12,11 +12,13 @@ session_start();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/stylesConsultas.css">
-    <!-- <script src="https://kit.fontawesome.com/b5e2972857.js" crossorigin="anonymous"></script> -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <?php
-$servidor = 'localhost:3307';
+// $servidor = 'localhost:3307';
+$servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'tienda2';
@@ -79,16 +81,21 @@ if ($conexion->connect_errno) {
     <div class="container1">
         <div class="carrito">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <select name="filtro" id="filtro" onchange="this.form.submit()">
-                    <option value="1">Todos los productos</option>
-                    <?php
-                    while ($fila = $catres->fetch_assoc()) {
-                        echo "<option value=\"categoria='" .  $fila['categoria'] . "'\">"
-                            . $fila['categoria'] . "</option>";
-                    }
-                    ?>
-                </select>
+                <div class="form-group busquedaBarra">
+                    <select name="filtro" class="form-control" id="filtro" onchange="this.form.submit()">
+                        <option value="1">Todos los productos</option>
+                        <?php
+                        while ($fila = $catres->fetch_assoc()) {
+                            echo "<option value=\"categoria='" .  $fila['categoria'] . "'\">"
+                                . $fila['categoria'] . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+
+
             </form>
+            <br><br>
             <div class="carritoIcon">
                 <i class="fa-solid fa-cart-shopping" onclick="document.location='carrito.php'" id="carritoIcon"></i>
                 <div class="numeroElementos">
@@ -107,7 +114,7 @@ if ($conexion->connect_errno) {
             $descuento = 0.9;
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<div class=\"producto\">";
-                echo "<form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">";
+                echo "<form class=\"formProd\" action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">";
                 if ($cont == $random)
                     echo "<input type=\"hidden\" name=\"oferta\" value=\"" . $fila['precio'] * $descuento . "\">";
                 echo "<input type=\"hidden\" name=\"carrito\" value=\"" . $fila['idProducto'] . "\">";

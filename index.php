@@ -92,25 +92,25 @@
     <br />
     <div class="contenedor">
         <div class="cont">
-            <div class="card card1" style="width: 18rem;">
+            <div class="card card1" style="width: 16rem;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fa-solid fa-credit-card iconos"></i></h5>
                     <p class="card-text"> Contamos con varios métodos de pago</p>
                 </div>
             </div>
-            <div class="card card2" style="width: 18rem;">
+            <div class="card card2" style="width: 16rem;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fa-solid fa-box iconos"></i></h5>
                     <p class="card-text">  Ventas por mayoreo (Personalizadas)</p>
                 </div>
             </div>
-            <div class="card card3" style="width: 18rem;">
+            <div class="card card3" style="width: 16rem;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fa-solid fa-truck iconos"></i></h5>
                     <p class="card-text"> Envíos Rápidos y Seguros </p>
                 </div>
             </div>    
-            <div class="card card4" style="width: 18rem;">
+            <div class="card card4" style="width: 16rem;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fa-solid fa-tag iconos"></i></h5>
                     <p class="card-text"> Productos nuevos cada semana</p>
@@ -161,7 +161,7 @@
 
             $mail->Subject = 'Gracias por suscribirte!';
 
-            $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario! :';
+            $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario! :NAVIDAD22';
 
             $mail->send();
 

@@ -5,11 +5,14 @@ body,
 html,
 form,
 .botones,
-.container {
+.container1 {
     margin: 0;
     width: 100%;
+    
+    background-color: #151515;
+    color: #fff;
 }
-.container {
+.container1 {
     display: flex;
     justify-content: center;
 }
