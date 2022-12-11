@@ -51,15 +51,77 @@
 
         entrada();
     </script>
-
-
     <?php
     if (isset($_GET["w1"])) {
         $email = $_GET["w1"];
         correoSuscrip($email);
-
-    } 
+    }
     ?>
+    <!-- CARRUSEL -->
+    <br />
+    <div class="CARROUSEL">
+        <div class="carrousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="media/anuncio1.webp" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="media/anuncio2.png" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="media/anuncio3.png" alt="..." />
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="contenedor">
+        <div class="cont">
+            <div class="card card1" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-credit-card iconos"></i></h5>
+                    <p class="card-text"> Contamos con varios métodos de pago</p>
+                </div>
+            </div>
+            <div class="card card2" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-box iconos"></i></h5>
+                    <p class="card-text">  Ventas por mayoreo (Personalizadas)</p>
+                </div>
+            </div>
+            <div class="card card3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-truck iconos"></i></h5>
+                    <p class="card-text"> Envíos Rápidos y Seguros </p>
+                </div>
+            </div>    
+            <div class="card card4" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-tag iconos"></i></h5>
+                    <p class="card-text"> Productos nuevos cada semana</p>
+                </div>
+            </div>    
+        </div>
+    </div>   
+    <br />
+
+
+
 
 
     <?php
@@ -68,47 +130,48 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
-    function correoSuscrip ($correo){
-    
+
+    function correoSuscrip($correo)
+    {
+
         require 'recursos/PHPMailer/src/PHPMailer.php';
         require 'recursos/PHPMailer/src/SMTP.php';
         require 'recursos/PHPMailer/src/Exception.php';
-    
+
         $mail = new PHPMailer(true);
         try {
-    
-    
+
+
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-    
+
             $mail->Username = 'wichotl64@gmail.com';
             $mail->Password   = 'ipubwtvrhzyyqhly';
-    
+
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
-    
+
             $mail->setFrom('wichotl64@gmail.com', 'Candy Shop Mx');
             $mail->addAddress($correo, 'Gracias por suscribirte!');
-    
+
             $mail->addCC($correo);
-    
+
             $mail->isHTML(true);
-    
+
             $mail->Subject = 'Gracias por suscribirte!';
-    
+
             $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario! :';
-    
+
             $mail->send();
-    
+
             // echo 'Correo electronico enviado con exito';
             header("Location: suscripcionExito.php");
-           
         } catch (Exception $e) {
             echo $mail->ErrorInfo;
         }
     }
-    
+
 
 
 
