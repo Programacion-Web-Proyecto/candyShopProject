@@ -1,0 +1,46 @@
+* {
+    font-family: "Montserrat", sans-serif;
+}
+body,
+html,
+form,
+.botones,
+.container {
+    margin: 0;
+    width: 100%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+#divBajas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+img {
+    height: 250px;
+    width: 100%;
+    object-fit: contain;
+}
+.regresar,
+#eliminar {
+    width: 49%;
+}
+.botones {
+    display: flex;
+    justify-content: space-between;
+}
+table {
+    width: 100%;
+}
+.borde {
+    max-width: 350px;
+    box-sizing: border-box;
+}
+.titulo{
+    font-weight: bold;
+}

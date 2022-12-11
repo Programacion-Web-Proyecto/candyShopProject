@@ -1,0 +1,47 @@
+* {
+    font-family: "Montserrat", sans-serif;
+}
+body,
+html,
+form,
+.botones,
+.container {
+    margin: 0;
+    width: 100%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+#divModif {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+.borde,
+form {
+    display: flex;
+    flex-direction: column;
+}
+.borde {
+    max-width: 350px;
+    box-sizing: border-box;
+}
+.regresar,
+#guardar {
+    width: 49%;
+}
+textarea {
+    height: 150px;
+    resize: none;
+}
+.botones {
+    display: flex;
+    justify-content: space-between;
+}
+input,
+button,
+textarea,
+select {
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
