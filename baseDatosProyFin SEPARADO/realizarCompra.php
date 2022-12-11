@@ -17,6 +17,8 @@ $totE = count($mexico); ?>
             <form action="carrito.php" method="post">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" id="nombre" required>
+                <label for="nombre">Teléfono</label>
+                <input type="number" name="tel" id="tel" required>
                 <label>Dirección</label>
                 <label for="calle">Calle*</label>
                 <input type="text" name="calle" id="calle" required>

@@ -9,6 +9,7 @@
 <?php
 error_reporting(E_ERROR);
 session_start(); //para poder hacer uso de las varaibles sesion 
+$contCarrito = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
 ?>
 
 <body>
@@ -25,8 +26,13 @@ session_start(); //para poder hacer uso de las varaibles sesion
           <a class="nav-link" href="index.php">INICIO</a>
         </li>
         <li class="nav-item dropdown ">
-          <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-cart-shopping"></i>
+          <a class="dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-expanded="false">
+            <div class="carritoIcon">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <div class="numeroElementos">
+                <?php echo $contCarrito ?>
+              </div>
+            </div>
           </a>
           <div class="dropdown-menu submenu">
             <a class="dropdown-item" href="#">TIENDA</a>
