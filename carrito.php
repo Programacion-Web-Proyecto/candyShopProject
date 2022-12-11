@@ -20,8 +20,8 @@ session_start();
 <?php
 
 include 'navbar.php';
-// $servidor = 'localhost:3307';
-$servidor = 'localhost:33065';
+$servidor = 'localhost:3307';
+// $servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'tienda2';
@@ -58,10 +58,14 @@ if ($conexion->connect_errno) {
             $_SESSION['carrito'] = array_values($aux);
         }
     } elseif (isset($_POST['suma'])) {
-        $i = $_POST['cual'];
-        $_SESSION['carrito'][$i][8]++;
+        $cual = $_POST['cual'];
+        $id = $_POST['id'];
+        $suma = 0;
+        for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+            if ($_SESSION['carrito'][$i][0] == $id) $suma += $_SESSION['carrito'][$i][8];
+        }
         //para que la cantidad de compra del producto no sobrepase la existencia del mismo
-        if ($_SESSION['carrito'][$i][5] < $_SESSION['carrito'][$i][8]) $_SESSION['carrito'][$i][8] = $_SESSION['carrito'][$i][5];
+        if ($suma < $_SESSION['carrito'][$cual][5]) $_SESSION['carrito'][$cual][8]++;
     }
 ?>
 <?php
@@ -88,17 +92,18 @@ if ($conexion->connect_errno) {
             <form class=\"formProd\" action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">
             <button class=\"sumres\" type=\"submit\" name=\"resta\">-</button>
             <input type=\"hidden\" name=\"cual\" value=\"" . $i . "\">
+            <input type=\"hidden\" name=\"id\" value=\"" . $_SESSION['carrito'][$i][0] . "\">
             <span class=\"conten\">" . $_SESSION['carrito'][$i][8] . "</span>
             <button class=\"sumres\" type=\"submit\" name=\"suma\">+</button>
             </form></tr></td>";
             echo "</table></div>";
         }
         echo "</div>";
-        echo "<div class=\"compra \">
+        echo "<div class=\"compra\">
         <button class=\"btn btn-danger btn-lg\" onclick=\"document.location='realizarCompra.php'\">Realizar Compra</button>
         </div>";
     } else {
-        echo "<legend style=\"color: gray; text-align:center;\"><i class=\"fa-solid fa-triangle-exclamation\" style=\"font-size:400px;\"></i><br>Carrito vacío</legend>";
+        echo "<legend style=\"color: gray; text-align:center; background-color: #151515\"><i class=\"fa-solid fa-triangle-exclamation\" style=\"font-size:350px;\"></i><br>Carrito vacío</legend>";
     }
     echo "</div>";
 }
@@ -109,6 +114,7 @@ include 'html/footer.html';
 <body>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
 </html>
