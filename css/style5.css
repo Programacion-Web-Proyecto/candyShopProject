@@ -52,12 +52,12 @@ main {
     border-radius: 20px;
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(2, auto);
   
     grid-template-areas:
-      "header header header "
-      "contenido contenido contenido";
+      "header "
+      "contenido";
 
   }
 
