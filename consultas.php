@@ -17,8 +17,8 @@ session_start();
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <?php
-// $servidor = 'localhost:3307';
-$servidor = 'localhost:33065';
+$servidor = 'localhost:3307';
+// $servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'tienda2';

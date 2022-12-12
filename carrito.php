@@ -20,8 +20,8 @@ session_start();
 <?php
 
 include 'navbar.php';
-// $servidor = 'localhost:3307';
-$servidor = 'localhost:33065';
+$servidor = 'localhost:3307';
+// $servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'tienda2';
@@ -102,7 +102,8 @@ if ($conexion->connect_errno) {
         echo "</div>";
         echo "<div class=\"compra\">
         <label class=\"totPagar\">TOTAL A PAGAR: $" . $totalPagar . "</label>
-        <form action=\"realizarCompra.php\" method=\"post\">";
+        <form action=\"realizarCompra.php\" method=\"post\">
+        <input type=\"hidden\" name=\"totPagar\" value=\"" . $totalPagar . "\">";
         echo "<input type=\"submit\" value=\"Realizar compra\" class=\"btn btn-danger btn-lg\" name=\"realizarCompra\">";
         echo "</form></div>";
     } else {
