@@ -20,8 +20,8 @@ session_start();
 <?php
 
 include 'navbar.php';
-$servidor = 'localhost:3307';
-// $servidor = 'localhost:33065';
+// $servidor = 'localhost:3307';
+$servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
 $bd = 'tienda2';

@@ -12,6 +12,7 @@
     <link href="css/style7.css" media="all" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style6.css">
+    <link rel="stylesheet" href="css/styleFormularioCompra.css">
 
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -25,36 +26,66 @@ if ($_SESSION['acceso']) {
         <body>
             <div class="container1">
                 <div class="infoUsuario">
+                    <h2>Datos de Pago</h2>
                     <form action="compra.php" method="post">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" required>
-                        <label for="tel">Teléfono</label>
-                        <input type="number" name="tel" id="tel" required>
-                        <label for="email">Correo Electrónico</label>
-                        <input type="text" name="email" id="email" required>
-                        <label>Dirección</label>
-                        <label for="calle">Calle</label>
-                        <input type="text" name="calle" id="calle" required>
-                        <label for="noExt">Numero Exterior</label>
-                        <input type="number" name="noExt" id="noExt" required>
-                        <label for="pais">País</label>
-                        <select name="pais" id="pais" required>
-                            <option value="mx">México</option>
-                            <option value="us">Estados Unidos</option>
-                        </select>
-                        <label for="estado">Estado</label>
-                        <select name="estado" id="estado" disabled="disabled" required></select>
-                        <label for="muni">Municipio</label>
-                        <select name="muni" id="muni" disabled="disabled" required></select>
-                        <label for="CP">Código Postal</label>
-                        <input type="number" name="CP" id="CP" required>
-                        <label for="CP">Agregar cupón de descuento</label>
-                        <input type="text" name="cupon" id="cupon">
-                        <label for="metodo">Método de pago</label>
-                        <input type="radio" name="metodo" id="oxxo" value="OXXO">
-                        <label for="oxxo">OXXO</label>
-                        <input type="radio" name="metodo" id="tarjeta" value="Tarjeta">
-                        <label for="tarjeta">Tarjeta</label>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre</label>
+                            <input class="form-control" type="text" name="nombre" id="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Teléfono</label>
+                            <input class="form-control" type="number" name="tel" id="tel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Correo Electrónico</label>
+                            <input class="form-control" type="text" name="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <label for="calle">Calle</label>
+                            <input class="form-control" type="text" name="calle" id="calle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="noExt">Numero Exterior</label>
+                            <input class="form-control" type="number" name="noExt" id="noExt" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pais">País</label>
+                            <select class="custom-select" name="pais" id="pais" required>
+                                <option value="mx">México</option>
+                                <option value="us">Estados Unidos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select class="custom-select" name="estado" id="estado" disabled="disabled" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="muni">Municipio</label>
+                            <select class="custom-select" name="muni" id="muni" disabled="disabled" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="CP">Código Postal</label>
+                            <input class="form-control" type="number" name="CP" id="CP" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CP">Agregar cupón de descuento</label>
+                            <input class="form-control" type="text" name="cupon" id="cupon">
+                        </div>
+                        <fieldset class="form-group row">
+                            <!-- <label for=""></label> -->
+                            <legend class="col-form-label col-sm-3 float-sm-left pt-0">Método de pago</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="metodo" id="oxxo" value="OXXO">
+                                    <label class="form-check-label" for="oxxo">OXXO</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="metodo" id="tarjeta" value="Tarjeta">
+                                    <label class="form-check-label" for="tarjeta">Tarjeta</label>
+                                </div>
+                            </div>
+                        </fieldset>
                         <div class="opps">
                             <div class="opps-header">
                                 <div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
@@ -122,7 +153,7 @@ if ($_SESSION['acceso']) {
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" value="Realizar Compra">
+                        <input class="btn btn-success btn-lg btn-block"type="submit" value="Realizar Compra">
                     </form>
                 </div>
             </div>
