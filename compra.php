@@ -9,8 +9,8 @@
 <body class="all">
     <?php
     include "navbar.php";
-    // $servidor = 'localhost:3307';
-    $servidor = 'localhost:33065';
+    $servidor = 'localhost:3307';
+    // $servidor = 'localhost:33065';
     $cuenta = 'root';
     $password = '';
     $bd = 'tienda2';
@@ -68,18 +68,18 @@
             $cupon = (isset($_POST['cupon'])) ? $_POST['cupon'] : "Ninguno";
             $descuento = 0;
             $iva = $totalPagar * 0.16;
-            $gastos=($_POST['pais']=="USA")?  150 : 0;
+            $gastos = ($_POST['pais'] == "USA") ?  150 : 0;
 
 
             switch ($cupon) {
                 case 'WELCOMEFAMILY22': //50%
-                    $totDesc *= 0.5;
                     $descuento = $totDesc * 0.5;
+                    $totDesc *= 0.5;
                     $iva = $totDesc * 0.16;
                     break;
                 case 'DULCES10': //10%
+                    $descuento = $totDesc * 0.1;
                     $totDesc *= 0.9;
-                    $descuento = $totDesc *= 0.1;
                     $iva = $totDesc * 0.16;
                     break;
                 case 'DESCUENTO50': //50 PESOS MENOS
@@ -89,9 +89,18 @@
                     $iva = $totDesc * 0.16;
                     break;
             }
-            $totDesc+=$gastos;
+            $totDesc += $gastos;
             $mail->Subject = 'Recibo de Pago';
             $direccion = $_POST['calle'] . ' #' . $_POST['noExt'];
+            for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+                $sql = "SELECT nombreProducto,precio FROM productos WHERE idProducto=" . $_SESSION['carrito'][$i][0];
+                $resultado = $conexion->query($sql);
+                $PRODUCTOS = "";
+                if ($fila = $resultado->fetch_assoc()) {
+                    $precio = ($_SESSION['carrito'][$i][1]) ? $_SESSION['carrito'][$i][1] : $fila['precio'];
+                    $PRODUCTOS .= 'Producto: ' . $fila['nombreProducto'] . '   Precio: $' . $precio . ' Cantidad: ' . $_SESSION['carrito'][$i][2] . '<br>';
+                }
+            }
             $mail->Body = 'Gracias por comprar en CandyShopMx le adjunto su recibo <br> <br>
                         DATOS DEL CLIENTE <br>
                         Nombre: ' . $_POST['nombre'] . ' <br>
@@ -102,7 +111,8 @@
                         Codigo Postal: ' . $_POST['CP'] . ' <br>
                         Numero de telefono: ' . $_POST['tel'] . ' <br> <br>
                         CONCEPTO: DULCERIA <br>
-                        Modo de Pago: ' . $_POST['metodo'] . ' <br>
+                        Modo de Pago: ' . $_POST['metodo'] . ' <br>'.
+                        $PRODUCTOS.'
                         Total a pagar: $' . $totalPagar . '  <br>
                         Gastos de envio: $' . $gastos . '  <br>
                         Cupon: ' . $cupon . '  <br>
@@ -123,13 +133,21 @@
                             <li class="list-group-item ticketComp">Nombre: ' . $_POST['nombre'] . '</li>
                             <li class="list-group-item ticketComp">Pais: ' . $_POST['pais'] . '</li>
                             <li class="list-group-item ticketComp">Estado: ' . $_POST['estado'] . '</li>
-                            <li class="list-group-item ticketComp">Municipio: ' . $_POST['muni'] .' </li>
+                            <li class="list-group-item ticketComp">Municipio: ' . $_POST['muni'] . ' </li>
                             <li class="list-group-item ticketComp">Direccion: ' . $direccion . ' </li>
                             <li class="list-group-item ticketComp">Numero de telefono: ' . $_POST['tel'] . ' </li>
                             <li class="list-group-item ticketComp">Codigo Postal: ' . $_POST['CP'] . ' </li>
                             <li class="list-group-item ticketComp">CONCEPTO: DULCERIA </li>
-                            <li class="list-group-item ticketComp">Modo de Pago: ' . $_POST['metodo'] . ' </li>
-                            <li class="list-group-item ticketComp">Total a pagar: $' . $totalPagar . ' </li>
+                            <li class="list-group-item ticketComp">Modo de Pago: ' . $_POST['metodo'] . ' </li>';
+            for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+                $sql = "SELECT nombreProducto,precio FROM productos WHERE idProducto=" . $_SESSION['carrito'][$i][0];
+                $resultado = $conexion->query($sql);
+                if ($fila = $resultado->fetch_assoc()) {
+                    $precio = ($_SESSION['carrito'][$i][1]) ? $_SESSION['carrito'][$i][1] : $fila['precio'];
+                    echo '<li class="list-group-item ticketComp">Producto: ' . $fila['nombreProducto'] . '   Precio: $' . $precio . ' Cantidad: ' . $_SESSION['carrito'][$i][2] . '</li>';
+                }
+            }
+            echo '<li class="list-group-item ticketComp">Total a pagar: $' . $totalPagar . ' </li>
                             <li class="list-group-item ticketComp">Gastos de envio: $' . $gastos . ' </li>
                             <li class="list-group-item ticketComp">Cupon: ' . $cupon . ' </li>
                             <li class="list-group-item ticketComp">IVA: ' . $iva . ' </li>
@@ -158,7 +176,3 @@
     }
     ?>
 </body>
-
-
-
-
