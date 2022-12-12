@@ -74,7 +74,6 @@ if ($conexion->connect_errno) {
                 echo "<form class=\"formProd\" action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">";
                 echo "<input type=\"hidden\" name=\"quitarCarrito\" value=\"" . $i . "\">";
                 echo "<button type=\"submit\" class=\"quitar tooltip1000\"><i class=\"fa-regular fa-trash-can\"><span class=\"tooltiptext1000\">Quitar del carrito</span></i></button></form>";
-
                 echo "<img class=\"imgProd\" src=\"images/" . $fila['archIMG'] . "\" alt=\"" . $fila['nombreProducto'] . "\">";
                 echo "<table>";
                 echo "<tr><td><span class=\"titulo " . "\">Nombre: </span><span class=\"conten\">" . $fila['nombreProducto'] . "</span></tr></td>";
@@ -94,14 +93,25 @@ if ($conexion->connect_errno) {
                 <button class=\"sumres\" type=\"submit\" name=\"suma\">+</button>
                 </form></tr></td>";
                 echo "</table></div>";
-                $totalPagar += ($_SESSION['carrito'][$i][2] * $fila['precio']);
+                if ($_SESSION['carrito'][$i][1])
+                    $totalPagar += ($_SESSION['carrito'][$i][2] * $_SESSION['carrito'][$i][1]);
+                else
+                    $totalPagar += ($_SESSION['carrito'][$i][2] * $fila['precio']);
             }
         }
         echo "</div>";
         echo "<div class=\"compra\">
         <label class=\"totPagar\">TOTAL A PAGAR: $" . $totalPagar . "</label>
-        <button class=\"btn btn-danger btn-lg\" onclick=\"document.location='realizarCompra.php'\">Realizar Compra</button>
-        </div>";
+        <form action=\"realizarCompra.php\" method=\"post\">";
+        // for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+        //     echo "<input type=\"hidden\" name=\"id" . $i . "\" value=\"" . $_SESSION['carrito'][$i][0] . "\">";
+        //     if ($_SESSION['carrito'][$i][1])
+        //         echo "<input type=\"hidden\" name=\"oferta" . $i . "\" value=\"" . $_SESSION['carrito'][$i][1] . "\">";
+        //     echo "<input type=\"hidden\" name=\"cant" . $i . "\" value=\"" . $_SESSION['carrito'][$i][2] . "\">";
+        // }
+        echo "<input type=\"submit\" value=\"Realizar compra\" class=\"btn btn-danger btn-lg\" name=\"realizarCompra\">";
+        // <button class=\"btn btn-danger btn-lg\" onclick=\"document.location='realizarCompra.php'\">Realizar Compra</button>
+        echo "</form></div>";
     } else {
         echo "<legend style=\"color: gray; text-align:center; background-color: #151515\"><i class=\"fa-solid fa-triangle-exclamation\" style=\"font-size:350px;\"></i><br>Carrito vacío</legend>";
     }
