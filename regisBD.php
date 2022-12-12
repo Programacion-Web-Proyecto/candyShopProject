@@ -26,21 +26,18 @@ if ($conexion->connect_errno) {
     $nuevaContra = false;
 
     //ANTES DE REGISTRAR, BUSCAMOS SI EL USUARIO NO EXISTE 
-    $sql = $conexion->prepare("select * from usuarios WHERE nombreUsr =?"); //hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
-    $sql->bind_param('s', $nomUsr);
-    $sql->execute();
-
-    $resultado = $sql->get_result(); //aplicamos sentencia
-    if ($fila = $resultado->fetch_assoc()) {
+    $sql = "select * from usuarios WHERE nombreUsr =" . $nomUsr; //hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
+    $resultado = $conexion->query($sql); //aplicamos sentencia
+    if ($resultado->num_rows) {
         header("Location: errorRegistro.php");
     } else {
         //hacemos cadena con la sentencia mysql para insertar datos
-        $sql = $conexion->prepare("INSERT INTO usuarios (idUsr, nombreUsr, correo, contrasena,bloqueo,contadorB,nuevaContra) 
-    VALUES(?,?,?,?,?,?,?)");
-        $sql->bind_param('sssssss', $id, $nomUsr, $correo, $pass, $bloq, $contadorB, $nuevaContra);
-        $sql->execute();
-        $resultado2 = $sql->get_result();  //aplicamos sentencia que inserta datos en la tabla usuarios de la base de datos
-        echo $resultado2; //revisamos que se inserto un registro
-        header("Location: exitoRegistro.php");
+        $sql = "INSERT INTO usuarios (idUsr, nombreUsr, correo, contrasena,bloqueo,contadorB,nuevaContra) 
+    VALUES('$id', '$nomUsr', '$correo', '$pass', '$bloq', '$contadorB', '$nuevaContra')";
+        $conexion->query($sql);
+        if ($conexion->affected_rows >= 1) { //revisamos que se inserto un registro
+            echo $resultado2; //revisamos que se inserto un registro
+            header("Location: exitoRegistro.php");
+        }
     }
 }
