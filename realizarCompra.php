@@ -52,8 +52,8 @@ if ($_SESSION['acceso']) {
                         <div class="form-group">
                             <label for="pais">País</label>
                             <select class="custom-select" name="pais" id="pais" required>
-                                <option value="mx">México</option>
-                                <option value="us">Estados Unidos</option>
+                                <option value="MX">México</option>
+                                <option value="USA">Estados Unidos</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -126,17 +126,16 @@ if ($_SESSION['acceso']) {
                             </div>
                         </div>
                         <div class="contenedor">
-                            <form class="needs-validation" novalidate>
                                 <div class="form-group">
                                     <!-- <label for=""></label> -->
                                     <label>Tipo de tarjeta</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="tipoT" id="VISA" value="VISA">
-                                        <label class="form-check-label" for="VISA">VISA</label>
+                                        <label class="form-check-label" for="VISA">BBVA</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="tipoT" id="masterC" value="masterC">
-                                        <label class="form-check-label" for="masterC">MasterCard</label>
+                                        <label class="form-check-label" for="masterC">Santander</label>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -146,7 +145,7 @@ if ($_SESSION['acceso']) {
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="validationTooltip02">Nombre</label>
-                                        <input type="text" class="form-control" id="validationTooltip01" value="">
+                                        <input type="text" class="form-control" id="validationTooltip015" value="">
                                         <div class="valid-tooltip">
                                             Completo!
                                         </div>
@@ -155,7 +154,7 @@ if ($_SESSION['acceso']) {
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationTooltip03">Mes</label>
-                                        <input type="number" min="1" max="12" class="form-control" id="validationTooltip03">
+                                        <input type="number" min="1" max="12" class="form-control" id="validationTooltip034">
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationTooltip04">Año</label>
@@ -166,7 +165,6 @@ if ($_SESSION['acceso']) {
                                         <input type="password" class="form-control" id="validationTooltip05" maxlength="3">
                                     </div>
                                 </div>
-                            </form>
                         </div>
                         <input class="btn btn-success btn-lg btn-block" type="submit" value="Realizar Compra">
                     </form>

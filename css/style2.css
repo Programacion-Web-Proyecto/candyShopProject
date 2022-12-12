@@ -87,3 +87,16 @@
   border-radius: 20px;
   color: #000;
 }
+
+.acceso> ul, .acceso>li{
+  color: #000;
+  background-color: #faf3db;
+}
+
+.ticketComp{
+  background-color: #faf3db;
+}
+
+.acceso> .ticketComp{
+  background-color: #faf3db;
+}
