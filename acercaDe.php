@@ -24,14 +24,14 @@
                 <h2> Somos una empresa 100% comprometida
                 </h2>
             </header>
-            <main class="contenido">
+            <div class="contInfo">
                 <p>
                     <br><br>
                     CandyShop Mx es una cadena de dulcerías con amplio surtido, excelente sercivio y precios competitivos. Nos esforzamos para que nuestros clientes tengas la mejor experiencia de compra, accedan al mejor surtido de productos y aprovechen niestros precios y promociones.
                     <br><br>
                     Desde hace mas de 30 años somos mayoristas y trabajamos directamnte con fabricantes para llevarte los mejores precios y los productos mas novedosos. En nuestras tiendas encontraras mas de 1000 productos para surtur tu tienda, armas una fiesta, poner uan mesa de dulcs, comprar un regalo o simplemente satisfaces tus anotjos.
                 </p>
-            </main>
+            </div>
             <img class="image" src="media/tiendaImg.png" alt="Developer Academy">
 
 
