@@ -94,9 +94,9 @@
         <div class="cont2" id="regalo">
 
             <button type="button" class="btnCupon" onclick="sorpresa()"><img src="media/liston.png" alt=""></button>
-        
+
         </div>
-        
+
     </div>
     <br>
     <div class="contenedor">
@@ -178,13 +178,14 @@
             $mail->addCC($correo);
 
             $mail->isHTML(true);
-
             $mail->Subject = 'Gracias por suscribirte!';
-
-            $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario! :WELCOMEFAMILY22';
-
+            
+            // $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario!
+            //  :WELCOMEFAMILY22 
+            //  Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> ';
+            $mail->AddEmbeddedImage("cuponSus.png", "my-attach", "cuponSus.png");
+            $mail->Body = 'Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> Here is an image!';
             $mail->send();
-
             // echo 'Correo electronico enviado con exito';
             header("Location: suscripcionExito.php");
         } catch (Exception $e) {
@@ -199,6 +200,7 @@
 
 
     ?>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
