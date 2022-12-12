@@ -51,7 +51,6 @@ if ($conexion->connect_errno) {
                 array_push($_SESSION['carrito'], $prodCar);
             }
         }
-        var_dump($_SESSION['carrito']);
     }
     include 'navbar.php';
     $sql = "SELECT categoria FROM productos GROUP BY categoria";
