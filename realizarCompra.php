@@ -49,11 +49,11 @@ if ($_SESSION['acceso']) {
                         <label for="CP">Código Postal</label>
                         <input type="number" name="CP" id="CP" required>
                         <label for="CP">Agregar cupón de descuento</label>
-                        <input type="text" name="cupon" id="cupon" required>
+                        <input type="text" name="cupon" id="cupon">
                         <label for="metodo">Método de pago</label>
-                        <input type="radio" name="metodo" id="oxxo" value="oxxo">
+                        <input type="radio" name="metodo" id="oxxo" value="OXXO">
                         <label for="oxxo">OXXO</label>
-                        <input type="radio" name="metodo" id="tarjeta" value="tarjeta">
+                        <input type="radio" name="metodo" id="tarjeta" value="Tarjeta">
                         <label for="tarjeta">Tarjeta</label>
                         <div class="opps">
                             <div class="opps-header">
@@ -199,10 +199,10 @@ if ($_SESSION['acceso']) {
             $("#muni").val('');
         });
         $('input[name="metodo"]').change(function() {
-            if ($('input[name="metodo"]:checked').val() == "oxxo") {
+            if ($('input[name="metodo"]:checked').val() == "OXXO") {
                 $(".opps").show();
                 $(".contenedor").hide();
-            } else if ($('input[name="metodo"]:checked').val() == "tarjeta") {
+            } else if ($('input[name="metodo"]:checked').val() == "Tarjeta") {
                 $(".opps").hide();
                 $(".contenedor").show();
             }
@@ -210,8 +210,8 @@ if ($_SESSION['acceso']) {
     });
 </script>
 
-<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-<script src="js/mainTarjeta.js"></script>
+<!-- <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+<script src="js/mainTarjeta.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
