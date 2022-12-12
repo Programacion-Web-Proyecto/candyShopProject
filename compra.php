@@ -90,20 +90,20 @@
             $direccion = $_POST['calle'] . ' #' . $_POST['noExt'];
             $mail->Body = 'Gracias por comprar en CandyShopMx le adjunto su recibo <br> <br>
                         DATOS DEL CLIENTE <br>
-                        Nombre:' . $_POST['nombre'] . ' <br>
-                        Pais:' . $_POST['pais'] . '<br> 
-                        Estado:' . $_POST['estado'] . ' <br>
-                        Municipio:' . $_POST['muni'] . ' <br>
-                        Direccion:' . $direccion . ' <br>
-                        Codigo Postal:' . $_POST['CP'] . ' <br>
-                        Numero de telefono:' . $_POST['tel'] . ' <br> <br>
+                        Nombre: ' . $_POST['nombre'] . ' <br>
+                        Pais: ' . $_POST['pais'] . '<br> 
+                        Estado: ' . $_POST['estado'] . ' <br>
+                        Municipio: ' . $_POST['muni'] . ' <br>
+                        Direccion: ' . $direccion . ' <br>
+                        Codigo Postal: ' . $_POST['CP'] . ' <br>
+                        Numero de telefono: ' . $_POST['tel'] . ' <br> <br>
                         CONCEPTO: DULCERIA <br>
-                        Modo de Pago:' . $_POST['metodo'] . ' <br>
-                        Total a pagar:' . $totalPagar . '  <br>
-                        Cupon:' . $cupon . '  <br>
+                        Modo de Pago: ' . $_POST['metodo'] . ' <br>
+                        Total a pagar: $' . $totalPagar . '  <br>
+                        Cupon: ' . $cupon . '  <br>
                         IVA: ' . $iva . '<br>
                         Descuento: ' . $descuento . '<br>
-                        <p style: "font-size: 30px">TOTAL FINAL: <b>$</b></p>';
+                        <p style: "font-size: 30px">TOTAL FINAL: <b>$' . $totDesc . '</b></p>';
 
 
             $mail->send();
@@ -115,6 +115,19 @@
                             </div>
                             <a href='contacto.php' class='btn btn-secondary btn-lg btn-block' role='button' aria-pressed=true'>REGRESAR</a>
                         </div>";
+            for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+                $sql = "SELECT existencia FROM productos WHERE idProducto=" . $_SESSION['carrito'][$i][0];
+                $resultado = $conexion->query($sql);
+                if ($fila = $resultado->fetch_assoc()) {
+                    $existencia = $fila['existencia'];
+                    $existencia -= $_SESSION['carrito'][$i][2];
+                    if ($existencia < 0) $existencia = 0;
+                    echo "<script>console.log(" . $existencia . ");</script>";
+                    $sql = "UPDATE productos SET existencia=" . $existencia . " WHERE idProducto=" . $_SESSION['carrito'][$i][0] . ";";
+                    $conexion->query($sql);
+                }
+            }
+            unset($_SESSION['carrito']);
         } catch (Exception $e) {
             echo $mail->ErrorInfo;
         }
