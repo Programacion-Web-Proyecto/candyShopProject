@@ -1,0 +1,26 @@
+body{
+  background-color: #151515;
+
+}
+.container1 {
+    display: flex;
+    width: 65%;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #faf3db;
+    border-radius: 30px;
+    color: #000;
+    font-size: 20px;
+}
+.infoUsuario {
+    width: 100%;
+    margin: 50px;
+    /* padding-top: -80px; */
+  }
+.infoUsuario >h2{
+    text-align: center;
+}
