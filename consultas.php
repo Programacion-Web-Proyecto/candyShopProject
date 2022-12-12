@@ -33,17 +33,6 @@ if ($conexion->connect_errno) {
         $carrito = $_POST['carrito'];
         $oferta = (isset($_POST['oferta'])) ? $_POST['oferta'] : 0;
         $prodCar = array();
-        // $sql = "SELECT idProducto,existencia FROM productos";
-        // $resultado = $conexion->query($sql);
-        // while ($fila = $resultado->fetch_assoc()) { //para actualizar la existencia de los productos
-        //     for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
-        //         if ($_SESSION['carrito'][$i][0] == $fila['idProducto']) {
-        //             $_SESSION['carrito'][$i][5] = $fila['existencia']; //actualiza existenca
-        //             //para que la cantidad de compra del producto no sobrepase la existencia del mismo
-        //             if ($_SESSION['carrito'][$i][5] < $_SESSION['carrito'][$i][8]) $_SESSION['carrito'][$i][8] = $_SESSION['carrito'][$i][5];
-        //         }
-        //     }
-        // }
         $sql = "SELECT existencia FROM productos WHERE idProducto=" . $carrito . ";";
         $resultado = $conexion->query($sql);
         $yaHay = false;
@@ -93,8 +82,6 @@ if ($conexion->connect_errno) {
                         ?>
                     </select>
                 </div>
-
-
             </form>
             <br><br>
             <div class="carritoIcon">
