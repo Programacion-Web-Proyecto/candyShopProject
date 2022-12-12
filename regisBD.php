@@ -1,9 +1,4 @@
-
-
 <?php
-
-
-
 $servidor = ':33065';
 $cuenta = 'root';
 $password = '';
@@ -26,7 +21,7 @@ if ($conexion->connect_errno) {
     $nuevaContra = false;
 
     //ANTES DE REGISTRAR, BUSCAMOS SI EL USUARIO NO EXISTE 
-    $sql = "select * from usuarios WHERE nombreUsr =" . $nomUsr; //hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
+    $sql = "select * from usuarios WHERE nombreUsr = '$nomUsr'"; //hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
     $resultado = $conexion->query($sql); //aplicamos sentencia
     if ($resultado->num_rows) {
         header("Location: errorRegistro.php");
