@@ -180,11 +180,9 @@
             $mail->isHTML(true);
             $mail->Subject = 'Gracias por suscribirte!';
             
-            // $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario!
-            //  :WELCOMEFAMILY22 
-            //  Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> ';
             $mail->AddEmbeddedImage("cuponSus.png", "my-attach", "cuponSus.png");
-            $mail->Body = 'Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> Here is an image!';
+            $mail->Body = 'Gracias por su suscripcion a nuestra gran familia, CandyShopMx le agradece con un cupon de descuento por nuevo usuario!
+             <img alt="PHPMailer" src="cid:my-attach">';
             $mail->send();
             // echo 'Correo electronico enviado con exito';
             header("Location: suscripcionExito.php");
