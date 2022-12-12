@@ -107,7 +107,7 @@ ol {
 	margin: 17px 0 0 16px;
 }
 
-li + li {
+.opps-instructions > li + li {
 	margin-top: 10px;
 	color: #000000;
 }

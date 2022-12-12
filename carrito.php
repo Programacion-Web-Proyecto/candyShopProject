@@ -103,14 +103,7 @@ if ($conexion->connect_errno) {
         echo "<div class=\"compra\">
         <label class=\"totPagar\">TOTAL A PAGAR: $" . $totalPagar . "</label>
         <form action=\"realizarCompra.php\" method=\"post\">";
-        // for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
-        //     echo "<input type=\"hidden\" name=\"id" . $i . "\" value=\"" . $_SESSION['carrito'][$i][0] . "\">";
-        //     if ($_SESSION['carrito'][$i][1])
-        //         echo "<input type=\"hidden\" name=\"oferta" . $i . "\" value=\"" . $_SESSION['carrito'][$i][1] . "\">";
-        //     echo "<input type=\"hidden\" name=\"cant" . $i . "\" value=\"" . $_SESSION['carrito'][$i][2] . "\">";
-        // }
         echo "<input type=\"submit\" value=\"Realizar compra\" class=\"btn btn-danger btn-lg\" name=\"realizarCompra\">";
-        // <button class=\"btn btn-danger btn-lg\" onclick=\"document.location='realizarCompra.php'\">Realizar Compra</button>
         echo "</form></div>";
     } else {
         echo "<legend style=\"color: gray; text-align:center; background-color: #151515\"><i class=\"fa-solid fa-triangle-exclamation\" style=\"font-size:350px;\"></i><br>Carrito vacío</legend>";
