@@ -21,7 +21,7 @@
             <header class="header">
                 <h2>Preguntas Frecuentes</h2>
             </header>
-            <div class="contenido">
+            <div class="cont1">
                 <div class="categorias" id="categorias">
                     <div class="categoria activa" data-categoria="metodos-pago">
                         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
