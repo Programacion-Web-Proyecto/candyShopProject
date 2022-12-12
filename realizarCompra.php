@@ -120,40 +120,45 @@ if ($_SESSION['acceso']) {
                             </div>
                         </div>
                         <div class="contenedor">
-                            <div class="grupo">
-                                <label for="inputNumero">Número Tarjeta</label>
-                                <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
-                            </div>
-                            <div class="grupo">
-                                <label for="inputNombre">Nombre</label>
-                                <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
-                            </div>
-                            <div class="flexbox">
-                                <div class="grupo expira">
-                                    <label for="selectMes">Expiracion</label>
-                                    <div class="flexbox">
-                                        <div class="grupo-select">
-                                            <select name="mes" id="selectMes">
-                                                <option disabled selected>Mes</option>
-                                            </select>
-                                            <i class="fas fa-angle-down"></i>
-                                        </div>
-                                        <div class="grupo-select">
-                                            <select name="year" id="selectYear">
-                                                <option disabled selected>Año</option>
-                                            </select>
-                                            <i class="fas fa-angle-down"></i>
+                            <form class="needs-validation" novalidate>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationTooltip01">Número Tarjeta</label>
+                                        <input type="number" class="form-control" id="validationTooltip01" value="" >
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationTooltip02">Nombre</label>
+                                        <input type="text" class="form-control" id="validationTooltip01" value="" >
+                                        <div class="valid-tooltip">
+                                            Completo!
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="grupo ccv">
-                                    <label for="inputCCV">CCV</label>
-                                    <input type="text" id="inputCCV" maxlength="3">
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationTooltip03">Mes</label>
+                                        <input type="number"min="1" max="12" class="form-control" id="validationTooltip03" >
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="validationTooltip04">Año</label>
+                                        <input type="number"min="1" max="99" class="form-control" id="validationTooltip03" >
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="validationTooltip05">CVV</label>
+                                        <input type="password" class="form-control" id="validationTooltip05"  maxlength="3">
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
+
+
+
+
+
+
+
+
                         </div>
-                        <input class="btn btn-success btn-lg btn-block"type="submit" value="Realizar Compra">
+                        <input class="btn btn-success btn-lg btn-block" type="submit" value="Realizar Compra">
                     </form>
                 </div>
             </div>
