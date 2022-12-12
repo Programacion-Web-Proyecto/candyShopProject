@@ -20,7 +20,7 @@
 include 'navbar.php';
 if ($_SESSION['acceso']) {
     if (isset($_POST['realizarCompra'])) {
-
+        $totPagar = $_POST['totPagar'];
 ?>
 
         <body>
@@ -68,6 +68,12 @@ if ($_SESSION['acceso']) {
                             <label for="CP">Código Postal</label>
                             <input class="form-control" type="number" name="CP" id="CP" required>
                         </div>
+                        <div class="form-group MEXICO">
+                            <label style="color:#e23939">Gastos de envío dentro de México gratuitos</label>
+                        </div>
+                        <div class="form-group USA">
+                            <label style="color:#e23939">Gastos de envío a USA 150MXN</label>
+                        </div>
                         <div class="form-group">
                             <label for="CP">Agregar cupón de descuento</label>
                             <input class="form-control" type="text" name="cupon" id="cupon">
@@ -93,7 +99,7 @@ if ($_SESSION['acceso']) {
                                     <div class="opps-brand"><img src="media/oxxoimg.png" alt="OXXOPay"></div>
                                     <div class="opps-ammount">
                                         <h3>Monto a pagar</h3>
-                                        <h2>$ 0,000.00 <sup>MXN</sup></h2>
+                                        <h2>$ <?php echo $totPagar; ?> <sup>MXN</sup></h2>
                                         <p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
                                     </div>
                                 </div>
@@ -121,14 +127,26 @@ if ($_SESSION['acceso']) {
                         </div>
                         <div class="contenedor">
                             <form class="needs-validation" novalidate>
+                                <div class="form-group">
+                                    <!-- <label for=""></label> -->
+                                    <label>Tipo de tarjeta</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tipoT" id="VISA" value="VISA">
+                                        <label class="form-check-label" for="VISA">VISA</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tipoT" id="masterC" value="masterC">
+                                        <label class="form-check-label" for="masterC">MasterCard</label>
+                                    </div>
+                                </div>
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationTooltip01">Número Tarjeta</label>
-                                        <input type="number" class="form-control" id="validationTooltip01" value="" >
+                                        <input type="number" class="form-control" id="validationTooltip01" value="">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="validationTooltip02">Nombre</label>
-                                        <input type="text" class="form-control" id="validationTooltip01" value="" >
+                                        <input type="text" class="form-control" id="validationTooltip01" value="">
                                         <div class="valid-tooltip">
                                             Completo!
                                         </div>
@@ -137,26 +155,18 @@ if ($_SESSION['acceso']) {
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationTooltip03">Mes</label>
-                                        <input type="number"min="1" max="12" class="form-control" id="validationTooltip03" >
+                                        <input type="number" min="1" max="12" class="form-control" id="validationTooltip03">
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationTooltip04">Año</label>
-                                        <input type="number"min="1" max="99" class="form-control" id="validationTooltip03" >
+                                        <input type="number" min="1" max="99" class="form-control" id="validationTooltip03">
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationTooltip05">CVV</label>
-                                        <input type="password" class="form-control" id="validationTooltip05"  maxlength="3">
+                                        <input type="password" class="form-control" id="validationTooltip05" maxlength="3">
                                     </div>
                                 </div>
                             </form>
-
-
-
-
-
-
-
-
                         </div>
                         <input class="btn btn-success btn-lg btn-block" type="submit" value="Realizar Compra">
                     </form>
@@ -172,6 +182,8 @@ if ($_SESSION['acceso']) {
 </html>
 <script>
     $(document).ready(function() {
+        $(".MEXICO").hide();
+        $(".USA").hide();
         $("#pais").val('');
         $(".opps").hide();
         $(".contenedor").hide();
@@ -191,6 +203,8 @@ if ($_SESSION['acceso']) {
                     op.value = est;
                     selEst.add(op);
                 }
+                $(".MEXICO").show();
+                $(".USA").hide();
             } else if (this.selectedIndex == 1) {
                 <?php require_once 'USA.php'; ?>;
                 const usa = <?php echo json_encode($USA); ?>;
@@ -202,6 +216,8 @@ if ($_SESSION['acceso']) {
                     op.value = est;
                     selEst.add(op);
                 }
+                $(".MEXICO").hide();
+                $(".USA").show();
             }
             $("#estado").val('');
             $("#muni").val('');
