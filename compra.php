@@ -9,8 +9,8 @@
 <body class="all">
     <?php
     include "navbar.php";
-    $servidor = 'localhost:3307';
-    // $servidor = 'localhost:33065';
+    // $servidor = 'localhost:3307';
+    $servidor = 'localhost:33065';
     $cuenta = 'root';
     $password = '';
     $bd = 'tienda2';
@@ -66,26 +66,30 @@
 
             $mail->isHTML(true);
             $cupon = (isset($_POST['cupon'])) ? $_POST['cupon'] : "Ninguno";
-            $descuento = "Ninguno";
+            $descuento = 0;
             $iva = $totalPagar * 0.16;
+            $gastos=($_POST['pais']=="USA")?  150 : 0;
+
+
             switch ($cupon) {
                 case 'WELCOMEFAMILY22': //50%
                     $totDesc *= 0.5;
-                    $descuento = "50%";
+                    $descuento = $totDesc * 0.5;
                     $iva = $totDesc * 0.16;
                     break;
                 case 'DULCES10': //10%
                     $totDesc *= 0.9;
-                    $descuento = "10%";
+                    $descuento = $totDesc *= 0.1;
                     $iva = $totDesc * 0.16;
                     break;
                 case 'DESCUENTO50': //50 PESOS MENOS
                     $totDesc -= 50;
                     if ($totDesc < 0) $totDesc = 0;
-                    $descuento = "-$50";
+                    $descuento = 50;
                     $iva = $totDesc * 0.16;
                     break;
             }
+            $totDesc+=$gastos;
             $mail->Subject = 'Recibo de Pago';
             $direccion = $_POST['calle'] . ' #' . $_POST['noExt'];
             $mail->Body = 'Gracias por comprar en CandyShopMx le adjunto su recibo <br> <br>
@@ -100,6 +104,7 @@
                         CONCEPTO: DULCERIA <br>
                         Modo de Pago: ' . $_POST['metodo'] . ' <br>
                         Total a pagar: $' . $totalPagar . '  <br>
+                        Gastos de envio: $' . $gastos . '  <br>
                         Cupon: ' . $cupon . '  <br>
                         IVA: ' . $iva . '<br>
                         Descuento: ' . $descuento . '<br>
@@ -109,12 +114,30 @@
             $mail->send();
 
             // echo 'Correo electronico enviado con exito';
-            echo "<div class='acceso'>
-                            <div class='alert alert-success ' role='alert'>
-                                Recibo enviado a su correo.
+            echo '<div class="acceso">
+                            <div class="alert alert-success " role="alert">
+                                PAGO REALIZADO!
                             </div>
-                            <a href='contacto.php' class='btn btn-secondary btn-lg btn-block' role='button' aria-pressed=true'>REGRESAR</a>
-                        </div>";
+                            <ul class="list-group list-group-flush">
+                            <li class="list-group-item ticketComp">DATOS DEL CLIENTE</li>
+                            <li class="list-group-item ticketComp">Nombre: ' . $_POST['nombre'] . '</li>
+                            <li class="list-group-item ticketComp">Pais: ' . $_POST['pais'] . '</li>
+                            <li class="list-group-item ticketComp">Estado: ' . $_POST['estado'] . '</li>
+                            <li class="list-group-item ticketComp">Municipio: ' . $_POST['muni'] .' </li>
+                            <li class="list-group-item ticketComp">Direccion: ' . $direccion . ' </li>
+                            <li class="list-group-item ticketComp">Numero de telefono: ' . $_POST['tel'] . ' </li>
+                            <li class="list-group-item ticketComp">Codigo Postal: ' . $_POST['CP'] . ' </li>
+                            <li class="list-group-item ticketComp">CONCEPTO: DULCERIA </li>
+                            <li class="list-group-item ticketComp">Modo de Pago: ' . $_POST['metodo'] . ' </li>
+                            <li class="list-group-item ticketComp">Total a pagar: $' . $totalPagar . ' </li>
+                            <li class="list-group-item ticketComp">Gastos de envio: $' . $gastos . ' </li>
+                            <li class="list-group-item ticketComp">Cupon: ' . $cupon . ' </li>
+                            <li class="list-group-item ticketComp">IVA: ' . $iva . ' </li>
+                            <li class="list-group-item ticketComp">Descuento: ' . $descuento . '</li>
+                            <li class="list-group-item ticketComp h2">TOTAL FINAL: <b>$' . $totDesc . '</li>
+                            </ul>
+                            <a href="consultas.php" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed=true">Regresar a la tienda</a>
+                        </div>';
             for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
                 $sql = "SELECT existencia FROM productos WHERE idProducto=" . $_SESSION['carrito'][$i][0];
                 $resultado = $conexion->query($sql);
@@ -135,3 +158,7 @@
     }
     ?>
 </body>
+
+
+
+
